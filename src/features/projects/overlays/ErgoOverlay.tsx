@@ -1,19 +1,19 @@
-import svgPaths from "../imports/Frame1012/svg-6ajw2mfovb";
-import Frame935 from "../imports/Frame935/index";
-import imgPsd06 from "../imports/Frame1012/65a9803d0f82dbe9f3f2f61bc2fcd1f0edb8b376.png";
-import imgGroup200 from "../imports/Frame1012/059ce71771c2c4c5ce5890c969bae651faa8e85e.png";
-import imgRafflePage from "../imports/Frame1012/49071c537f9676247f93936e1cfbfc40bfcd2403.png";
-import img1280Crop from "../imports/Frame1012/60e2e8c34e7ee5cd32ae8da5c00c5aa4ab9a0f9c.png";
-import img2 from "../imports/Frame1012/b918abe3d6e32c4ffa0eab7627691ec4995de143.png";
-import imgCreateRaffle from "../imports/Frame1012/31ed18da6eaeba092ad2ef0fe6e21bb1d22e7fc3.png";
-import imgGroup204 from "../imports/Frame1012/05450046915739daf3ad69e6ea617c76ca6b85af.png";
-import imgUserFlow from "../imports/Frame1012/3a609b4a9da178482df955bae5060cb3898a1116.png";
-import imgGroup212 from "../imports/Frame1012/120c1f6c91dcaacafa8578b10a00b81340beaace.png";
-import imgGroup210 from "../imports/Frame1012/3068bb212ad173cc869d05797cd4900a565bcc0d.png";
-import imgGroup203 from "../imports/Frame1012/56e00affa20cb4c8351807645f019a5ebbc156e6.png";
-import imgGroup211 from "../imports/Frame1012/0a7442050b115354cea8d4b5727b08974230d954.png";
+import type { Lang } from "../../../data/translations";
+import svgPaths from "../../../imports/Frame1012/svg-6ajw2mfovb";
+import Frame935 from "../../../imports/Frame935/index";
+import imgPsd06 from "../../../imports/Frame1012/65a9803d0f82dbe9f3f2f61bc2fcd1f0edb8b376.png";
+import imgGroup200 from "../../../imports/Frame1012/059ce71771c2c4c5ce5890c969bae651faa8e85e.png";
+import imgRafflePage from "../../../imports/Frame1012/49071c537f9676247f93936e1cfbfc40bfcd2403.png";
+import img1280Crop from "../../../imports/Frame1012/60e2e8c34e7ee5cd32ae8da5c00c5aa4ab9a0f9c.png";
+import img2 from "../../../imports/Frame1012/b918abe3d6e32c4ffa0eab7627691ec4995de143.png";
+import imgCreateRaffle from "../../../imports/Frame1012/31ed18da6eaeba092ad2ef0fe6e21bb1d22e7fc3.png";
+import imgGroup204 from "../../../imports/Frame1012/05450046915739daf3ad69e6ea617c76ca6b85af.png";
+import imgUserFlow from "../../../imports/Frame1012/3a609b4a9da178482df955bae5060cb3898a1116.png";
+import imgGroup212 from "../../../imports/Frame1012/120c1f6c91dcaacafa8578b10a00b81340beaace.png";
+import imgGroup210 from "../../../imports/Frame1012/3068bb212ad173cc869d05797cd4900a565bcc0d.png";
+import imgGroup203 from "../../../imports/Frame1012/56e00affa20cb4c8351807645f019a5ebbc156e6.png";
+import imgGroup211 from "../../../imports/Frame1012/0a7442050b115354cea8d4b5727b08974230d954.png";
 
-type Lang = "en" | "de";
 
 const T = {
   en: {

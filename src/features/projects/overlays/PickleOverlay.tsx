@@ -1,12 +1,12 @@
-import svgPaths from "../imports/Frame998-1/svg-8x4hiyna9j";
-import imgOn1 from "../imports/Frame998-1/7cb504c92fe4fe79cd47243f2abb45bb29e7f467.png";
-import imgOn2 from "../imports/Frame998-1/7cf1538d8eb6b9798005e26592bf610e5b7e7308.png";
-import imgOn3 from "../imports/Frame998-1/46608e7ea329a19393808cf93e3b738e84819508.png";
-import imgFrame938 from "../imports/Frame998-1/9801a6542a796275cdc339a04c22388472b17478.png";
-import imgPickle311 from "../imports/Frame998-1/acdc7e48e14d806c2d917511651a7d4718f36049.png";
-import imgFrame939 from "../imports/Frame998-1/420b8be386865f3f5e2a2ebd6a2233e5c85005bd.png";
+import type { Lang } from "../../../data/translations";
+import svgPaths from "../../../imports/Frame998-1/svg-8x4hiyna9j";
+import imgOn1 from "../../../imports/Frame998-1/7cb504c92fe4fe79cd47243f2abb45bb29e7f467.png";
+import imgOn2 from "../../../imports/Frame998-1/7cf1538d8eb6b9798005e26592bf610e5b7e7308.png";
+import imgOn3 from "../../../imports/Frame998-1/46608e7ea329a19393808cf93e3b738e84819508.png";
+import imgFrame938 from "../../../imports/Frame998-1/9801a6542a796275cdc339a04c22388472b17478.png";
+import imgPickle311 from "../../../imports/Frame998-1/acdc7e48e14d806c2d917511651a7d4718f36049.png";
+import imgFrame939 from "../../../imports/Frame998-1/420b8be386865f3f5e2a2ebd6a2233e5c85005bd.png";
 
-type Lang = "en" | "de";
 
 const T = {
   en: {

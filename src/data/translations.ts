@@ -49,3 +49,5 @@ export const TRANSLATIONS = {
     navVisit: "Visitenkarten",
   },
 } as const;
+
+export type Translation = (typeof TRANSLATIONS)[Lang];

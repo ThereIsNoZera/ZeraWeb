@@ -1,2 +1,65 @@
 @import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,600&family=Poppins:ital,wght@0,400;0,500;1,500&display=swap');
+
+:root {
+  --font-clash: 'Clash Display', Arial, sans-serif;
+  --font-fraunces: 'Fraunces', Georgia, serif;
+  --font-poppins: 'Poppins', Arial, sans-serif;
+}
+
+.font-clash {
+  font-family: var(--font-clash);
+}
+
+.font-fraunces {
+  font-family: var(--font-fraunces);
+}
+
+.font-poppins {
+  font-family: var(--font-poppins);
+}
+
+body {
+  font-family: var(--font-clash);
+  font-synthesis: none;
+}
+
+/*
+ * Figma Make exports style names as if they were font-family names.
+ * Map those generated names back to the real web fonts and exact weights.
+ */
+[class*='Clash_Display:Regular'] {
+  font-family: var(--font-clash) !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+}
+
+[class*='Clash_Display:Medium'] {
+  font-family: var(--font-clash) !important;
+  font-weight: 500 !important;
+  font-style: normal !important;
+}
+
+[class*='Fraunces:SemiBold_Italic'] {
+  font-family: var(--font-fraunces) !important;
+  font-weight: 600 !important;
+  font-style: italic !important;
+}
+
+[class*='Poppins:Regular'] {
+  font-family: var(--font-poppins) !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+}
+
+[class*='Poppins:Medium'] {
+  font-family: var(--font-poppins) !important;
+  font-weight: 500 !important;
+  font-style: normal !important;
+}
+
+[class*='Poppins:Medium_Italic'] {
+  font-family: var(--font-poppins) !important;
+  font-weight: 500 !important;
+  font-style: italic !important;
+}

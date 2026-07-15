@@ -1,16 +1,16 @@
-import svgPaths from "../imports/Frame1013/svg-jyti2nqip8";
-import imgIdMockup from "../imports/Frame1013/9d3f778fb42712ef8444d831d6f31ce68c2349a4.png";
-import imgBanner from "../imports/Frame1013/78a2226078a61d8a3f833f94063570798378013a.png";
-import imgCert1 from "../imports/Frame1013/77ff07580e89a3443a299a51c77c69f3389e7c0b.png";
-import imgCert2 from "../imports/Frame1013/e99975e2d76dec5ece74d554bedf994a9df8e22f.png";
-import imgThree from "../imports/Frame1013/84e7474b3d604ab97815ee9c26d9d9b610e551bf.png";
-import imgArtboard from "../imports/Frame1013/045b0a2898b89a5136e93132eff220d812a2fe81.png";
-import imgFrame955 from "../imports/Frame1013/41a78b3da987b9226890711e8771396a7a6176aa.png";
-import imgImage3 from "../imports/Frame1013/c9d907d7b3af801973a4248e566aa0d93bcefd11.png";
-import imgImage2 from "../imports/Frame1013/1b6248be839072150fe18d8bd67eb825a83570d0.png";
-import imgImage1 from "../imports/Frame1013/013900141a95332d7c830d610d2dfcf82e1325e7.png";
+import type { Lang } from "../../../data/translations";
+import svgPaths from "../../../imports/Frame1013/svg-jyti2nqip8";
+import imgIdMockup from "../../../imports/Frame1013/9d3f778fb42712ef8444d831d6f31ce68c2349a4.png";
+import imgBanner from "../../../imports/Frame1013/78a2226078a61d8a3f833f94063570798378013a.png";
+import imgCert1 from "../../../imports/Frame1013/77ff07580e89a3443a299a51c77c69f3389e7c0b.png";
+import imgCert2 from "../../../imports/Frame1013/e99975e2d76dec5ece74d554bedf994a9df8e22f.png";
+import imgThree from "../../../imports/Frame1013/84e7474b3d604ab97815ee9c26d9d9b610e551bf.png";
+import imgArtboard from "../../../imports/Frame1013/045b0a2898b89a5136e93132eff220d812a2fe81.png";
+import imgFrame955 from "../../../imports/Frame1013/41a78b3da987b9226890711e8771396a7a6176aa.png";
+import imgImage3 from "../../../imports/Frame1013/c9d907d7b3af801973a4248e566aa0d93bcefd11.png";
+import imgImage2 from "../../../imports/Frame1013/1b6248be839072150fe18d8bd67eb825a83570d0.png";
+import imgImage1 from "../../../imports/Frame1013/013900141a95332d7c830d610d2dfcf82e1325e7.png";
 
-type Lang = "en" | "de";
 
 const T = {
   en: {

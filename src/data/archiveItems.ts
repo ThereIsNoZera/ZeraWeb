@@ -1,6 +1,3 @@
-import { useState } from "react";
-import svgPaths from "../imports/Archive/svg-x2f1j61o2u";
-
 // ─── Image imports ────────────────────────────────────────────────────────────
 import imgGoosh2 from "../imports/Archive/d7fe8d0eb841a16e1d0ad14a8917d612bcbfd4eb.png";
 import imgPushing1 from "../imports/Archive/1db1dad4ed9a3a76f9a139dc36e48f6750711f8d.png";
@@ -37,7 +34,7 @@ export type Category =
   | "Produktdesign"
   | "Freie Kunst";
 
-const CATEGORIES: Category[] = [
+export const ARCHIVE_CATEGORIES: Category[] = [
   "Illustration",
   "Grafikdesign",
   "Fotography",
@@ -47,7 +44,7 @@ const CATEGORIES: Category[] = [
 
 type IconType = "project" | "collection" | null;
 
-interface CardData {
+export interface ArchiveCardData {
   id: number;
   images: string[];
   aspectW: number;
@@ -64,7 +61,7 @@ interface CardData {
 // Column 2 (center-left): 7–13
 // Column 3 (rightmost-right): 14–18
 // Column 4 (center-right): 19–24
-const CARDS: CardData[] = [
+export const ARCHIVE_CARDS: ArchiveCardData[] = [
   // ── Column 1 ──
   {
     id: 1, images: [imgGoosh2], aspectW: 566, aspectH: 800,
@@ -200,190 +197,21 @@ const ORIGINAL_COLUMNS: number[][] = [
   [18, 19, 20, 21, 22, 23],    // col 4: cards 19–24
 ];
 
-function distributeFiltered(cards: CardData[]): CardData[][] {
-  const cols: CardData[][] = [[], [], [], []];
+function distributeFiltered(cards: ArchiveCardData[]): ArchiveCardData[][] {
+  const cols: ArchiveCardData[][] = [[], [], [], []];
   cards.forEach((c, i) => cols[i % 4].push(c));
   return cols;
 }
 
-// ─── Icon components ──────────────────────────────────────────────────────────
-function ProjectIcon() {
-  return (
-    <div className="overflow-clip relative shrink-0 size-[18px]">
-      <div className="absolute inset-[16.67%_8.34%_20.83%_12.5%]">
-        <div className="absolute inset-[-5.33%_-4.21%]">
-          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 15.4497 12.45">
-            <path d={svgPaths.p295dd380} stroke="#333333" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2" />
-          </svg>
-        </div>
-      </div>
-    </div>
+export function getArchiveColumns(activeFilter: Category | null): ArchiveCardData[][] {
+  if (activeFilter) {
+    return distributeFiltered(
+      ARCHIVE_CARDS.filter((card) => card.categories.includes(activeFilter)),
+    );
+  }
+
+  return ORIGINAL_COLUMNS.map((indices) =>
+    indices.map((index) => ARCHIVE_CARDS[index]),
   );
 }
 
-function CollectionIcon() {
-  const dots = [
-    "inset-[12.5%_52.78%_58.33%_18.06%]",
-    "inset-[12.5%_12.5%_58.33%_58.33%]",
-    "inset-[52.78%_12.5%_18.06%_58.33%]",
-    "inset-[52.78%_52.78%_18.06%_18.06%]",
-  ];
-  return (
-    <div className="overflow-clip relative shrink-0 size-[18px]">
-      {dots.map((d, i) => (
-        <div key={i} className={`absolute ${d}`}>
-          <div className="absolute inset-[-11.43%]">
-            <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 6.45 6.45">
-              <path d={svgPaths.p17971080} stroke="#333333" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2" />
-            </svg>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function FilterIcon() {
-  return (
-    <div className="relative shrink-0 size-[24px]">
-      <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 24 24">
-        <g clipPath="url(#archive-filter-clip)">
-          <path d={svgPaths.p2d1bd480} stroke="black" strokeLinecap="round" strokeLinejoin="round" strokeOpacity="0.8" strokeWidth="2" />
-        </g>
-        <defs>
-          <clipPath id="archive-filter-clip">
-            <rect fill="white" height="24" width="24" />
-          </clipPath>
-        </defs>
-      </svg>
-    </div>
-  );
-}
-
-// ─── Archive card ─────────────────────────────────────────────────────────────
-function ArchiveCard({ card }: { card: CardData }) {
-  const { images, aspectW, aspectH, rotated, stacked, caption, icon } = card;
-  const ratio = aspectW / aspectH;
-
-  return (
-    <div style={{ breakInside: "avoid", marginBottom: 16 }}>
-      {/* Image area */}
-      {stacked ? (
-        // Card 14: 3 stacked images
-        <div className="flex flex-col gap-[10px]">
-          {images.map((src, i) => (
-            <div key={i} className="relative w-full" style={{ aspectRatio: `${aspectW}/${aspectH}` }}>
-              <img alt="" className="absolute inset-0 size-full object-cover pointer-events-none" src={src} />
-            </div>
-          ))}
-        </div>
-      ) : rotated ? (
-        // Rotated image: show at swapped aspect ratio
-        <div className="relative w-full overflow-hidden" style={{ aspectRatio: `${aspectH}/${aspectW}` }}>
-          <div
-            className="absolute"
-            style={{
-              width: `${(aspectH / aspectW) * 100}%`,
-              height: `${(aspectW / aspectH) * 100}%`,
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%) rotate(90deg)",
-            }}
-          >
-            <img alt="" className="absolute inset-0 size-full object-cover pointer-events-none" src={images[0]} />
-          </div>
-        </div>
-      ) : (
-        <div className="relative w-full" style={{ aspectRatio: `${ratio}` }}>
-          <img alt="" className="absolute inset-0 size-full object-cover pointer-events-none" src={images[0]} />
-        </div>
-      )}
-
-      {/* Caption row */}
-      <div className="flex gap-[6px] items-center mt-[6px]">
-        {icon === "project" && <ProjectIcon />}
-        {icon === "collection" && <CollectionIcon />}
-        <p className="font-['Clash_Display:Regular',sans-serif] text-[#333] text-[13px] leading-normal min-w-0">
-          {caption}
-        </p>
-      </div>
-    </div>
-  );
-}
-
-// ─── Archive page ─────────────────────────────────────────────────────────────
-export default function ArchivePage() {
-  const [activeFilter, setActiveFilter] = useState<Category | null>(null);
-
-  const columns: CardData[][] = activeFilter
-    ? distributeFiltered(CARDS.filter((c) => c.categories.includes(activeFilter)))
-    : ORIGINAL_COLUMNS.map((idxs) => idxs.map((i) => CARDS[i]));
-
-  const toggleFilter = (cat: Category) =>
-    setActiveFilter((prev) => (prev === cat ? null : cat));
-
-  return (
-    <div className="bg-[#f5f3eb] min-h-screen relative overflow-x-hidden">
-      {/* Content — centred 1280px, padded top for fixed header */}
-      <div className="mx-auto" style={{ maxWidth: 1280, paddingTop: 100, paddingBottom: 80, paddingLeft: 40, paddingRight: 40 }}>
-        {/* Title */}
-        <p
-          className="font-['Clash_Display:Regular',sans-serif] not-italic text-black tracking-[1.12px] whitespace-nowrap"
-          style={{ fontSize: 28, marginBottom: 28 }}
-        >
-          Explore my work archive
-        </p>
-
-        {/* Filter bar — matches design: funnel icon + pill buttons */}
-        <div className="flex gap-[12px] items-center" style={{ marginBottom: 32 }}>
-          <FilterIcon />
-          {CATEGORIES.map((cat) => {
-            const active = activeFilter === cat;
-            return (
-              <button
-                key={cat}
-                onClick={() => toggleFilter(cat)}
-                className="relative rounded-[12px] shrink-0 cursor-pointer border-0 p-0 bg-transparent"
-                style={{ outline: "none" }}
-              >
-                <div
-                  className="flex h-[42px] items-center justify-center px-[12px] rounded-[12px]"
-                  style={{
-                    backgroundColor: active ? "rgba(0,0,0,0.85)" : "transparent",
-                    transition: "background-color 0.15s ease",
-                  }}
-                >
-                  <div
-                    aria-hidden
-                    className="absolute border-2 border-solid inset-0 pointer-events-none rounded-[12px]"
-                    style={{ borderColor: "rgba(0,0,0,0.8)" }}
-                  />
-                  <p
-                    className="font-['Clash_Display:Regular',sans-serif] leading-normal not-italic shrink-0 text-[19px] tracking-[0.76px] whitespace-nowrap"
-                    style={{
-                      color: active ? "#f5f3eb" : "rgba(0,0,0,0.8)",
-                      transition: "color 0.15s ease",
-                    }}
-                  >
-                    {cat}
-                  </p>
-                </div>
-              </button>
-            );
-          })}
-        </div>
-
-        {/* 4-column masonry grid */}
-        <div className="flex gap-[16px] items-start">
-          {columns.map((col, ci) => (
-            <div key={ci} className="flex flex-col gap-[16px] flex-1 min-w-0">
-              {col.map((card) => (
-                <ArchiveCard key={card.id} card={card} />
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
