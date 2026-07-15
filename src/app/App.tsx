@@ -18,6 +18,7 @@ import ErgoOverlay from "./ErgoOverlay";
 import PickleOverlay from "./PickleOverlay";
 import OtavanOverlay from "./OtavanOverlay";
 import ConferenceOverlay from "./ConferenceOverlay";
+import { TRANSLATIONS, type Lang } from "./translations";
 
 // ─── Path / layout constants ──────────────────────────────────────────────────
 const DASHED_PATH =
@@ -31,50 +32,6 @@ const PATH_VIEWBOX_H = 3113.5;
 const SX = PATH_SVG_W / PATH_VIEWBOX_W;
 
 const PAGE_HEIGHT = 4200;
-
-// ─── i18n ─────────────────────────────────────────────────────────────────────
-type Lang = "en" | "de";
-
-const TRANSLATIONS = {
-  en: {
-    hello: "Hello, This is",
-    description:
-      "Design Student \nUI/UX design  Illustration  communication",
-    ergoTitle: "Ergo Raffle:",
-    ergoSub: "Redesign of a digital platform",
-    pickleTitle: "Pickle:",
-    pickleSub: "Illustration and product concept",
-    confTitle: "International Conference",
-    confSub: "Identity design",
-    otavanTitle: "Otavan:",
-    otavanSub:
-      "Learning game prototype for children on the autism spectrum",
-    archiveBtn: "Check out Archive for more",
-    navArchive: "Archive",
-    navProjects: "Projects",
-    navCV: "CV",
-    navVisit: "Visit cards",
-  },
-  de: {
-    hello: "Hallo, ich bin",
-    description:
-      "Designstudentin \nUI/UX Design  Illustration  Kommunikation",
-    ergoTitle: "Ergo Raffle:",
-    ergoSub: "Redesign einer digitalen Plattform",
-    pickleTitle: "Pickle:",
-    pickleSub: "Illustration und Produktidee",
-    confTitle: "Internationale Konferenz",
-    confSub: "Identitätsdesign",
-    otavanTitle: "Otavan:",
-    otavanSub:
-      "Lernspiel-Prototyp für Kinder im Autismus-Spektrum",
-    archiveBtn: "Mehr im Archiv entdecken",
-    navArchive: "Archiv",
-    navProjects: "Projekte",
-    navCV: "Lebenslauf",
-    navVisit: "Visitenkarten",
-  },
-} as const;
 
 // ─── Header scroll thresholds ─────────────────────────────────────────────────
 // "Projects" activates just before the first card (Ergo at top=800).
@@ -133,8 +90,7 @@ const SEGS = (() => {
 
 const TOTAL_PATH_LEN = SEGS.reduce((a, s) => a + s.pathLen, 0); // ≈ 5508.5
 const TOTAL_SCROLL_UNITS =
-  SEGS[SEGS.length - 1].scrollStart +
-  SEGS[SEGS.length - 1].scrollLen;
+  SEGS[SEGS.length - 1].scrollStart + SEGS[SEGS.length - 1].scrollLen;
 
 // Maps a normalised scroll progress [0,1] to a normalised path progress [0,1],
 // honouring the horizontal speed multiplier.
@@ -142,11 +98,8 @@ function scrollToPathProgress(t: number): number {
   const scrollPos = t * TOTAL_SCROLL_UNITS;
   for (const seg of SEGS) {
     if (scrollPos <= seg.scrollStart + seg.scrollLen) {
-      const segT =
-        (scrollPos - seg.scrollStart) / seg.scrollLen;
-      return (
-        (seg.pathStart + segT * seg.pathLen) / TOTAL_PATH_LEN
-      );
+      const segT = (scrollPos - seg.scrollStart) / seg.scrollLen;
+      return (seg.pathStart + segT * seg.pathLen) / TOTAL_PATH_LEN;
     }
   }
   return 1;
@@ -160,8 +113,7 @@ function lerp(a: number, b: number, t: number) {
   return a + (b - a) * clamp(t, 0, 1);
 }
 function lerpColor(a: string, b: string, t: number): string {
-  const p = (h: string, o: number) =>
-    parseInt(h.slice(o, o + 2), 16);
+  const p = (h: string, o: number) => parseInt(h.slice(o, o + 2), 16);
   const r = Math.round(lerp(p(a, 1), p(b, 1), t));
   const g = Math.round(lerp(p(a, 3), p(b, 3), t));
   const bl = Math.round(lerp(p(a, 5), p(b, 5), t));
@@ -178,7 +130,7 @@ const COLOR_TRANSITIONS = [
     to: "#D32B14",
   },
   {
-    start: 0.40,
+    start: 0.4,
     end: 0.46,
     from: "#D32B14",
     to: "#36AA09",
@@ -212,9 +164,11 @@ const COLOR_TRANSITIONS = [
 // given path progress. The star is solid (from === to) when sitting on or
 // near a stop, and only fades through a top→bottom gradient inside a narrow
 // band around each midpoint between two stops.
-function starGradientAtProgress(
-  p: number
-): { from: string; to: string; t: number } {
+function starGradientAtProgress(p: number): {
+  from: string;
+  to: string;
+  t: number;
+} {
   let currentColor = COLOR_TRANSITIONS[0].from;
 
   for (const transition of COLOR_TRANSITIONS) {
@@ -230,8 +184,7 @@ function starGradientAtProgress(
     // While inside the transition range, blend between the colors
     if (p <= transition.end) {
       const transitionProgress =
-        (p - transition.start) /
-        (transition.end - transition.start);
+        (p - transition.start) / (transition.end - transition.start);
 
       return {
         from: transition.from,
@@ -254,11 +207,7 @@ function starGradientAtProgress(
 // ─── Star shapes ──────────────────────────────────────────────────────────────
 function SmallColorStar({ color }: { color: string }) {
   return (
-    <svg
-      viewBox="0 0 90.4945 91.3477"
-      fill="none"
-      className="block size-full"
-    >
+    <svg viewBox="0 0 90.4945 91.3477" fill="none" className="block size-full">
       <path d={svgPaths.p232be3c0} fill={color} />
       <path d={svgPaths.p58682f2} fill={color} />
       <path d={svgPaths.p2c2f4200} fill={color} />
@@ -270,11 +219,7 @@ function SmallColorStar({ color }: { color: string }) {
 
 function RedStar() {
   return (
-    <svg
-      viewBox="0 0 113.835 114.907"
-      fill="none"
-      className="block size-full"
-    >
+    <svg viewBox="0 0 113.835 114.907" fill="none" className="block size-full">
       <path d={svgPaths.p13abbf00} fill="#D32B14" />
       <path d={svgPaths.p24b414f0} fill="#D32B14" />
       <path d={svgPaths.p2bc69900} fill="#D32B14" />
@@ -300,11 +245,7 @@ function YellowStarSvg({
   // the star approaches the next stop, instead of holding a static 50/50 blend.
   const midColor = lerpColor(fromColor, toColor, t);
   return (
-    <svg
-      viewBox="0 0 1164.03 1174.99"
-      fill="none"
-      className="block size-full"
-    >
+    <svg viewBox="0 0 1164.03 1174.99" fill="none" className="block size-full">
       <defs>
         <linearGradient id={gradId} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor={fromColor} />
@@ -362,10 +303,10 @@ function SiteHeader({
     page === "archive"
       ? "archive"
       : scrollY >= CV_SCROLL
-      ? "cv"
-      : scrollY >= PROJECTS_SCROLL
-      ? "projects"
-      : "none";
+        ? "cv"
+        : scrollY >= PROJECTS_SCROLL
+          ? "projects"
+          : "none";
 
   const scrollTo = (y: number) =>
     window.scrollTo({ top: y, behavior: "smooth" });
@@ -393,7 +334,14 @@ function SiteHeader({
         >
           <p
             className="[word-break:break-word] absolute font-['Clash_Display:Regular',sans-serif] leading-[normal] left-0 not-italic text-[20px] text-black top-0 tracking-[0.8px] whitespace-nowrap"
-            style={activeSection === "archive" ? { borderBottom: "3px solid rgba(226,187,0,0.8)", paddingBottom: 4 } : undefined}
+            style={
+              activeSection === "archive"
+                ? {
+                    borderBottom: "3px solid rgba(226,187,0,0.8)",
+                    paddingBottom: 4,
+                  }
+                : undefined
+            }
           >
             {t.navArchive}
           </p>
@@ -416,11 +364,7 @@ function SiteHeader({
           <p className="font-['Clash_Display:Regular',sans-serif] leading-[normal] not-italic text-[20px] text-black tracking-[0.8px]">
             |
           </p>
-          <NavItem
-            label={t.navVisit}
-            active={false}
-            onClick={() => {}}
-          />
+          <NavItem label={t.navVisit} active={false} onClick={() => {}} />
         </div>
         {/* DE / EN language toggle — click side labels or the switch to flip */}
         <div className="content-stretch flex gap-[10px] items-center relative shrink-0">
@@ -561,7 +505,12 @@ function ProjectOverlay({
           }}
         >
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-            <path d="M1 1L13 13M13 1L1 13" stroke="black" strokeWidth="2" strokeLinecap="round" />
+            <path
+              d="M1 1L13 13M13 1L1 13"
+              stroke="black"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
           </svg>
         </button>
         {children}
@@ -600,8 +549,7 @@ function ProjectCard({
   const shadowPad = shadowSide === "right" ? 26 : 13;
   const outerW = hovered ? 647 + shadowPad : 647;
   const outerH = hovered ? 564 : 552;
-  const outerLeft =
-    shadowSide === "right" && hovered ? left - shadowPad : left;
+  const outerLeft = shadowSide === "right" && hovered ? left - shadowPad : left;
   const shadowX = shadowSide === "right" ? 13 : -13;
 
   return (
@@ -613,8 +561,7 @@ function ProjectCard({
         width: outerW,
         height: outerH,
         zIndex: 4,
-        transition:
-          "width 0.25s ease, height 0.25s ease, left 0.25s ease",
+        transition: "width 0.25s ease, height 0.25s ease, left 0.25s ease",
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -636,8 +583,7 @@ function ProjectCard({
           boxShadow: hovered
             ? `${shadowX}px 11px 1px 1px rgba(0,0,0,0.25)`
             : "none",
-          transition:
-            "transform 0.25s ease, box-shadow 0.25s ease",
+          transition: "transform 0.25s ease, box-shadow 0.25s ease",
         }}
       >
         <div
@@ -695,8 +641,7 @@ export default function App() {
 
   useEffect(() => {
     if (hiddenPathRef.current) {
-      pathLengthRef.current =
-        hiddenPathRef.current.getTotalLength();
+      pathLengthRef.current = hiddenPathRef.current.getTotalLength();
     }
   }, []);
 
@@ -738,8 +683,7 @@ export default function App() {
 
     if (pathLengthRef.current > 0 && hiddenPathRef.current) {
       const traveled = pathProg * pathLengthRef.current;
-      const pt =
-        hiddenPathRef.current.getPointAtLength(traveled);
+      const pt = hiddenPathRef.current.getPointAtLength(traveled);
       starCX = PATH_ORIGIN_X + pt.x * SX;
       starCY = PATH_ORIGIN_Y + pt.y;
       traveledLength = traveled;
@@ -757,439 +701,427 @@ export default function App() {
   return (
     <div className="relative bg-[#f5f3eb]" style={{ overflowX: "hidden" }}>
       {/* Fixed header — sits above everything, tracks active section */}
-      <SiteHeader scrollY={scrollY} lang={lang} setLang={setLang} page={page} setPage={setPage} />
+      <SiteHeader
+        scrollY={scrollY}
+        lang={lang}
+        setLang={setLang}
+        page={page}
+        setPage={setPage}
+      />
 
       {/* Archive page — shown instead of main portfolio */}
       {page === "archive" && <ArchivePage />}
 
       {/* Main portfolio — hidden when on archive page */}
-      <div style={{ display: page === "archive" ? "none" : "block", minHeight: PAGE_HEIGHT }}>
-
-      {/* Paper texture — full viewport width */}
       <div
-        className="absolute inset-x-0 top-0 pointer-events-none"
         style={{
-          height: PAGE_HEIGHT,
-          zIndex: 2,
-          opacity: 0.2,
+          display: page === "archive" ? "none" : "block",
+          minHeight: PAGE_HEIGHT,
         }}
       >
+        {/* Paper texture — full viewport width */}
         <div
-          className="size-full"
+          className="absolute inset-x-0 top-0 pointer-events-none"
           style={{
-            backgroundImage: `url(${imgPaperOverlay})`,
-            backgroundRepeat: "repeat-y",
-            backgroundSize: "100% auto",
-            backgroundPosition: "top center",
-            mixBlendMode: "multiply",
-          }}
-        />
-      </div>
-
-      {/* Fixed 1280px website layout */}
-      <div
-        className="relative mx-auto"
-        style={{
-          width: 1280,
-          height: PAGE_HEIGHT,
-        }}
-      >
-        {/* Hidden path for getPointAtLength calculations */}
-        <svg
-          aria-hidden
-          className="absolute opacity-0 pointer-events-none"
-          style={{
-            left: PATH_ORIGIN_X,
-            top: PATH_ORIGIN_Y,
-            width: PATH_SVG_W,
-            height: PATH_VIEWBOX_H,
-          }}
-          viewBox={`0 0 ${PATH_VIEWBOX_W} ${PATH_VIEWBOX_H}`}
-        >
-          <path ref={hiddenPathRef} d={DASHED_PATH} />
-        </svg>
-
-        {/* ═══ HERO ═══ */}
-
-        <p
-          className="absolute not-italic m-0 whitespace-nowrap"
-          style={{
-            fontFamily: "'Clash Display', sans-serif",
-            fontSize: 32,
-            fontWeight: 400,
-            color: "rgba(0,0,0,0.8)",
-            letterSpacing: "10.24px",
-            left: 47,
-            top: 226,
-            lineHeight: "normal",
-            zIndex: 1,
-          }}
-        >
-          {t.hello}
-        </p>
-
-        {/* "Zera!" brush-stroke masked SVG */}
-        <div
-          className="absolute overflow-clip"
-          style={{
-            height: 238,
-            left: 44,
-            top: 278,
-            width: 662,
+            height: PAGE_HEIGHT,
             zIndex: 2,
+            opacity: 0.2,
           }}
         >
           <div
-            className="absolute inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat"
+            className="size-full"
             style={{
-              maskImage: `url("${imgGroup204}")`,
-              maskSize: "662.006px 238.001px",
+              backgroundImage: `url(${imgPaperOverlay})`,
+              backgroundRepeat: "repeat-y",
+              backgroundSize: "100% auto",
+              backgroundPosition: "top center",
+              mixBlendMode: "multiply",
+            }}
+          />
+        </div>
+
+        {/* Fixed 1280px website layout */}
+        <div
+          className="relative mx-auto"
+          style={{
+            width: 1280,
+            height: PAGE_HEIGHT,
+          }}
+        >
+          {/* Hidden path for getPointAtLength calculations */}
+          <svg
+            aria-hidden
+            className="absolute opacity-0 pointer-events-none"
+            style={{
+              left: PATH_ORIGIN_X,
+              top: PATH_ORIGIN_Y,
+              width: PATH_SVG_W,
+              height: PATH_VIEWBOX_H,
+            }}
+            viewBox={`0 0 ${PATH_VIEWBOX_W} ${PATH_VIEWBOX_H}`}
+          >
+            <path ref={hiddenPathRef} d={DASHED_PATH} />
+          </svg>
+
+          {/* ═══ HERO ═══ */}
+
+          <p
+            className="absolute not-italic m-0 whitespace-nowrap"
+            style={{
+              fontFamily: "'Clash Display', sans-serif",
+              fontSize: 32,
+              fontWeight: 400,
+              color: "rgba(0,0,0,0.8)",
+              letterSpacing: "10.24px",
+              left: 47,
+              top: 226,
+              lineHeight: "normal",
+              zIndex: 1,
+            }}
+          >
+            {t.hello}
+          </p>
+
+          {/* "Zera!" brush-stroke masked SVG */}
+          <div
+            className="absolute overflow-clip"
+            style={{
+              height: 238,
+              left: 44,
+              top: 278,
+              width: 662,
+              zIndex: 2,
+            }}
+          >
+            <div
+              className="absolute inset-0 mask-alpha mask-intersect mask-no-clip mask-no-repeat"
+              style={{
+                maskImage: `url("${imgGroup204}")`,
+                maskSize: "662.006px 238.001px",
+              }}
+            >
+              <svg
+                className="absolute inset-0 size-full"
+                fill="none"
+                preserveAspectRatio="none"
+                viewBox="0 0 662.007 238.002"
+              >
+                <path d={svgPaths.p2f203280} fill="black" fillOpacity="0.86" />
+                <path d={svgPaths.p3ef37a80} fill="black" fillOpacity="0.86" />
+                <path d={svgPaths.p139d2c80} fill="black" fillOpacity="0.86" />
+                <path d={svgPaths.p16950680} fill="black" fillOpacity="0.86" />
+                <path d={svgPaths.p3297d680} fill="black" fillOpacity="0.86" />
+                <path d={svgPaths.p391fc000} fill="black" fillOpacity="0.86" />
+                <path d={svgPaths.p2bda0f00} fill="black" fillOpacity="0.86" />
+              </svg>
+            </div>
+          </div>
+
+          {/* Description */}
+          <p
+            className="absolute not-italic m-0"
+            style={{
+              fontFamily: "'Clash Display', sans-serif",
+              fontSize: 20,
+              fontWeight: 400,
+              color: "rgba(0,0,0,0.8)",
+              letterSpacing: "1px",
+              left: 47,
+              top: 519,
+              width: 586,
+              whiteSpace: "pre-wrap",
+              lineHeight: "normal",
+              zIndex: 1,
+            }}
+          >
+            {t.description}
+          </p>
+
+          {/* ═══ DASHED PATH ═══ */}
+          <div
+            className="absolute"
+            style={{
+              left: PATH_ORIGIN_X,
+              top: PATH_ORIGIN_Y,
+              width: PATH_SVG_W,
+              height: PATH_VIEWBOX_H,
+              zIndex: 1,
             }}
           >
             <svg
-              className="absolute inset-0 size-full"
+              className="block size-full bg-[#00000000]"
               fill="none"
               preserveAspectRatio="none"
-              viewBox="0 0 662.007 238.002"
+              viewBox={`0 0 ${PATH_VIEWBOX_W} ${PATH_VIEWBOX_H}`}
             >
-              <path
-                d={svgPaths.p2f203280}
-                fill="black"
-                fillOpacity="0.86"
-              />
-              <path
-                d={svgPaths.p3ef37a80}
-                fill="black"
-                fillOpacity="0.86"
-              />
-              <path
-                d={svgPaths.p139d2c80}
-                fill="black"
-                fillOpacity="0.86"
-              />
-              <path
-                d={svgPaths.p16950680}
-                fill="black"
-                fillOpacity="0.86"
-              />
-              <path
-                d={svgPaths.p3297d680}
-                fill="black"
-                fillOpacity="0.86"
-              />
-              <path
-                d={svgPaths.p391fc000}
-                fill="black"
-                fillOpacity="0.86"
-              />
-              <path
-                d={svgPaths.p2bda0f00}
-                fill="black"
-                fillOpacity="0.86"
-              />
-            </svg>
-          </div>
-        </div>
-
-        {/* Description */}
-        <p
-          className="absolute not-italic m-0"
-          style={{
-            fontFamily: "'Clash Display', sans-serif",
-            fontSize: 20,
-            fontWeight: 400,
-            color: "rgba(0,0,0,0.8)",
-            letterSpacing: "1px",
-            left: 47,
-            top: 519,
-            width: 586,
-            whiteSpace: "pre-wrap",
-            lineHeight: "normal",
-            zIndex: 1,
-          }}
-        >
-          {t.description}
-        </p>
-
-        {/* ═══ DASHED PATH ═══ */}
-        <div
-          className="absolute"
-          style={{
-            left: PATH_ORIGIN_X,
-            top: PATH_ORIGIN_Y,
-            width: PATH_SVG_W,
-            height: PATH_VIEWBOX_H,
-            zIndex: 1,
-          }}
-        >
-          <svg
-            className="block size-full bg-[#00000000]"
-            fill="none"
-            preserveAspectRatio="none"
-            viewBox={`0 0 ${PATH_VIEWBOX_W} ${PATH_VIEWBOX_H}`}
-          >
-            <path
-              d={DASHED_PATH}
-              stroke="black"
-              strokeDasharray="12 17"
-              strokeLinejoin="bevel"
-              strokeOpacity="0.3"
-              strokeWidth="3"
-            />
-            {traveledLength > 0 && (
               <path
                 d={DASHED_PATH}
-                stroke="#565653"
-                strokeDasharray={`${traveledLength} 999999`}
+                stroke="black"
+                strokeDasharray="12 17"
                 strokeLinejoin="bevel"
-                strokeOpacity="1.0"
+                strokeOpacity="0.3"
                 strokeWidth="3"
               />
-            )}
-          </svg>
-        </div>
+              {traveledLength > 0 && (
+                <path
+                  d={DASHED_PATH}
+                  stroke="#565653"
+                  strokeDasharray={`${traveledLength} 999999`}
+                  strokeLinejoin="bevel"
+                  strokeOpacity="1.0"
+                  strokeWidth="3"
+                />
+              )}
+            </svg>
+          </div>
 
-        {/* ═══ DECORATIVE STARS ═══ */}
+          {/* ═══ DECORATIVE STARS ═══ */}
 
-        {/* Red — first bend */}
-        <div
-          className="absolute flex items-center justify-center"
-          style={{
-            left: 109.36,
-            top: 933.98,
-            width: 161.743,
-            height: 161.743,
-            zIndex: 1,
-          }}
-        >
+          {/* Red — first bend */}
           <div
+            className="absolute flex items-center justify-center"
             style={{
-              transform: "rotate(45deg)",
-              width: 113.832,
-              height: 114.908,
+              left: 109.36,
+              top: 933.98,
+              width: 161.743,
+              height: 161.743,
+              zIndex: 1,
             }}
           >
-            {/* <RedStar /> */}
-          </div>
-        </div>
-
-        {/* Green / Blue / Light-green indicator stars — hidden, used for color timing only */}
-
-        {/* ═══ PROJECT CARDS ═══ */}
-
-        {/* Ergo Raffle — right column */}
-        <ProjectCard
-          left={564}
-          top={800}
-          title={t.ergoTitle}
-          subtitle={t.ergoSub}
-          shadowSide="right"
-          onClick={() => setErgoOpen(true)}
-        >
-          <img
-            alt="Ergo Raffle"
-            className="absolute max-w-none"
-            style={{
-              left: "-6.56%",
-              top: "-0.07%",
-              width: "113.13%",
-              height: "100.13%",
-              objectFit: "cover",
-            }}
-            src={imgErgo}
-          />
-        </ProjectCard>
-
-        {/* Pickle — left column */}
-        <ProjectCard
-          left={76}
-          top={1424}
-          title={t.pickleTitle}
-          subtitle={t.pickleSub}
-          onClick={() => setPickleOpen(true)}
-        >
-          <div className="absolute inset-0 bg-[#fad978]">
             <div
-              className="absolute overflow-hidden"
               style={{
-                height: "100%",
-                left: 16,
-                top: 0,
-                width: "94.5%",
+                transform: "rotate(45deg)",
+                width: 113.832,
+                height: 114.908,
               }}
             >
-              <img
-                alt="Pickle"
-                className="absolute max-w-none"
-                style={{
-                  left: "-0.35%",
-                  top: "-1.06%",
-                  width: "101.08%",
-                  height: "102.12%",
-                  objectFit: "cover",
-                }}
-                src={imgPickle}
-              />
+              {/* <RedStar /> */}
             </div>
           </div>
-        </ProjectCard>
 
-        {/* International Conference — left column */}
-        <ProjectCard
-          left={76}
-          top={2048}
-          title={t.confTitle}
-          subtitle={t.confSub}
-          onClick={() => setConferenceOpen(true)}
-        >
-          <img
-            alt="International Conference"
-            className="absolute max-w-none"
-            style={{
-              left: "-9.47%",
-              top: "0",
-              width: "113.8%",
-              height: "102.62%",
-              objectFit: "cover",
-            }}
-            src={imgConference}
-          />
-        </ProjectCard>
+          {/* Green / Blue / Light-green indicator stars — hidden, used for color timing only */}
 
-        {/* Otavan — right column */}
-        <ProjectCard
-          left={564}
-          top={2672}
-          title={t.otavanTitle}
-          subtitle={t.otavanSub}
-          shadowSide="right"
-          onClick={() => setOtavanOpen(true)}
-        >
-          <div className="absolute inset-0 bg-white overflow-hidden">
+          {/* ═══ PROJECT CARDS ═══ */}
+
+          {/* Ergo Raffle — right column */}
+          <ProjectCard
+            left={564}
+            top={800}
+            title={t.ergoTitle}
+            subtitle={t.ergoSub}
+            shadowSide="right"
+            onClick={() => setErgoOpen(true)}
+          >
             <img
-              alt=""
-              className="absolute max-w-none object-cover opacity-70"
+              alt="Ergo Raffle"
+              className="absolute max-w-none"
               style={{
-                left: -54,
-                top: 0,
-                width: 665,
-                height: 444,
-                filter: "blur(2px)",
+                left: "-6.56%",
+                top: "-0.07%",
+                width: "113.13%",
+                height: "100.13%",
+                objectFit: "cover",
               }}
-              src={imgOtavanBg}
+              src={imgErgo}
             />
-            <div
-              className="absolute flex items-center"
-              style={{
-                left: 358,
-                top: 262,
-                width: 219,
-                height: 117,
-              }}
-            >
-              <img
-                alt=""
+          </ProjectCard>
+
+          {/* Pickle — left column */}
+          <ProjectCard
+            left={76}
+            top={1424}
+            title={t.pickleTitle}
+            subtitle={t.pickleSub}
+            onClick={() => setPickleOpen(true)}
+          >
+            <div className="absolute inset-0 bg-[#fad978]">
+              <div
+                className="absolute overflow-hidden"
                 style={{
-                  height: 93,
-                  width: 105,
-                  objectFit: "cover",
+                  height: "100%",
+                  left: 16,
+                  top: 0,
+                  width: "94.5%",
                 }}
-                src={imgCracry}
-              />
-              <div style={{ paddingTop: 12 }}>
+              >
                 <img
-                  alt=""
+                  alt="Pickle"
+                  className="absolute max-w-none"
                   style={{
-                    width: 96,
-                    height: 96,
+                    left: "-0.35%",
+                    top: "-1.06%",
+                    width: "101.08%",
+                    height: "102.12%",
                     objectFit: "cover",
                   }}
-                  src={imgThank}
+                  src={imgPickle}
                 />
               </div>
             </div>
-            <div
-              className="absolute overflow-hidden"
+          </ProjectCard>
+
+          {/* International Conference — left column */}
+          <ProjectCard
+            left={76}
+            top={2048}
+            title={t.confTitle}
+            subtitle={t.confSub}
+            onClick={() => setConferenceOpen(true)}
+          >
+            <img
+              alt="International Conference"
+              className="absolute max-w-none"
               style={{
-                left: -37,
-                top: 50,
-                width: 356,
-                height: 328,
+                left: "-9.47%",
+                top: "0",
+                width: "113.8%",
+                height: "102.62%",
+                objectFit: "cover",
               }}
-            >
+              src={imgConference}
+            />
+          </ProjectCard>
+
+          {/* Otavan — right column */}
+          <ProjectCard
+            left={564}
+            top={2672}
+            title={t.otavanTitle}
+            subtitle={t.otavanSub}
+            shadowSide="right"
+            onClick={() => setOtavanOpen(true)}
+          >
+            <div className="absolute inset-0 bg-white overflow-hidden">
               <img
                 alt=""
-                className="absolute max-w-none"
+                className="absolute max-w-none object-cover opacity-70"
                 style={{
-                  left: 0,
-                  top: "-0.01%",
-                  width: "132.21%",
-                  height: "100.02%",
+                  left: -54,
+                  top: 0,
+                  width: 665,
+                  height: 444,
+                  filter: "blur(2px)",
                 }}
-                src={imgOtavanColo}
+                src={imgOtavanBg}
+              />
+              <div
+                className="absolute flex items-center"
+                style={{
+                  left: 358,
+                  top: 262,
+                  width: 219,
+                  height: 117,
+                }}
+              >
+                <img
+                  alt=""
+                  style={{
+                    height: 93,
+                    width: 105,
+                    objectFit: "cover",
+                  }}
+                  src={imgCracry}
+                />
+                <div style={{ paddingTop: 12 }}>
+                  <img
+                    alt=""
+                    style={{
+                      width: 96,
+                      height: 96,
+                      objectFit: "cover",
+                    }}
+                    src={imgThank}
+                  />
+                </div>
+              </div>
+              <div
+                className="absolute overflow-hidden"
+                style={{
+                  left: -37,
+                  top: 50,
+                  width: 356,
+                  height: 328,
+                }}
+              >
+                <img
+                  alt=""
+                  className="absolute max-w-none"
+                  style={{
+                    left: 0,
+                    top: "-0.01%",
+                    width: "132.21%",
+                    height: "100.02%",
+                  }}
+                  src={imgOtavanColo}
+                />
+              </div>
+            </div>
+          </ProjectCard>
+
+          {/* ═══ CV SECTION ═══ */}
+          {/* Placed below the 4th card. The Cv import is 1364px wide — the wrapper
+            clips the 84px overhang so the inner content (portrait at x=164,
+            text at x=569) sits naturally within the 1280px canvas. */}
+          <div
+            className="absolute overflow-visible"
+            style={{ left: 0, top: 3350, width: 1280, height: 558, zIndex: 2 }}
+          >
+            <Cv />
+            {/* Interactive CvButton overlaid on top of the static Frame button inside
+              the Cv import. Frame2 sits at left=569; the button is the last item
+              in its flex column, which ends near the bottom of the content area. */}
+            <div
+              style={{ position: "absolute", left: 569, bottom: 55, zIndex: 1 }}
+            >
+              <CvButton />
+            </div>
+          </div>
+
+          {/* ═══ ARCHIVE BUTTON ═══ */}
+          <div className="absolute" style={{ left: 300, top: 3260, zIndex: 3 }}>
+            <ArchiveButton label={t.archiveBtn} />
+          </div>
+
+          {/* ═══ ANIMATED YELLOW STAR ═══ */}
+          <div
+            className="absolute pointer-events-none"
+            style={{
+              left: starCX - starSize / 2,
+              top: starCY - starSize / 2,
+              width: starSize,
+              height: starSize,
+              zIndex: 1,
+            }}
+          >
+            <div
+              style={{
+                width: "100%",
+                height: "100%",
+                transform: `rotate(${starRotation}deg)`,
+                transformOrigin: "center center",
+              }}
+            >
+              <YellowStarSvg
+                fromColor={starGrad.from}
+                toColor={starGrad.to}
+                t={starGrad.t}
               />
             </div>
           </div>
-        </ProjectCard>
-
-        {/* ═══ CV SECTION ═══ */}
-        {/* Placed below the 4th card. The Cv import is 1364px wide — the wrapper
-            clips the 84px overhang so the inner content (portrait at x=164,
-            text at x=569) sits naturally within the 1280px canvas. */}
-        <div
-          className="absolute overflow-visible"
-          style={{ left: 0, top: 3350, width: 1280, height: 558, zIndex: 2 }}
-        >
-          <Cv />
-          {/* Interactive CvButton overlaid on top of the static Frame button inside
-              the Cv import. Frame2 sits at left=569; the button is the last item
-              in its flex column, which ends near the bottom of the content area. */}
-          <div style={{ position: "absolute", left: 569, bottom: 55, zIndex: 1 }}>
-            <CvButton />
-          </div>
-        </div>
-
-        {/* ═══ ARCHIVE BUTTON ═══ */}
-        <div
-          className="absolute"
-          style={{ left: 300, top: 3260, zIndex: 3 }}
-        >
-          <ArchiveButton label={t.archiveBtn} />
-        </div>
-
-        {/* ═══ ANIMATED YELLOW STAR ═══ */}
-        <div
-          className="absolute pointer-events-none"
-          style={{
-            left: starCX - starSize / 2,
-            top: starCY - starSize / 2,
-            width: starSize,
-            height: starSize,
-            zIndex: 1,
-          }}
-        >
-          <div
-            style={{
-              width: "100%",
-              height: "100%",
-              transform: `rotate(${starRotation}deg)`,
-              transformOrigin: "center center",
-            }}
-          >
-            <YellowStarSvg
-              fromColor={starGrad.from}
-              toColor={starGrad.to}
-              t={starGrad.t}
-            />
-          </div>
         </div>
       </div>
-      </div>{/* end main portfolio wrapper */}
+      {/* end main portfolio wrapper */}
 
       {/* ═══ ERGO DETAIL OVERLAY ═══ */}
       {ergoOpen && (
         <ProjectOverlay onClose={() => setErgoOpen(false)}>
-          <div style={{ position: "relative", width: OVERLAY_WIDTH, minHeight: 7600 }}>
+          <div
+            style={{
+              position: "relative",
+              width: OVERLAY_WIDTH,
+              minHeight: 7600,
+            }}
+          >
             <ErgoOverlay lang={lang} />
           </div>
         </ProjectOverlay>
@@ -1205,7 +1137,13 @@ export default function App() {
       {/* ═══ CONFERENCE DETAIL OVERLAY ═══ */}
       {conferenceOpen && (
         <ProjectOverlay onClose={() => setConferenceOpen(false)}>
-          <div style={{ position: "relative", width: OVERLAY_WIDTH, minHeight: 1800 }}>
+          <div
+            style={{
+              position: "relative",
+              width: OVERLAY_WIDTH,
+              minHeight: 1800,
+            }}
+          >
             <ConferenceOverlay lang={lang} />
           </div>
         </ProjectOverlay>
@@ -1214,7 +1152,13 @@ export default function App() {
       {/* ═══ OTAVAN DETAIL OVERLAY ═══ */}
       {otavanOpen && (
         <ProjectOverlay onClose={() => setOtavanOpen(false)}>
-          <div style={{ position: "relative", width: OVERLAY_WIDTH, minHeight: 1400 }}>
+          <div
+            style={{
+              position: "relative",
+              width: OVERLAY_WIDTH,
+              minHeight: 1400,
+            }}
+          >
             <OtavanOverlay lang={lang} />
           </div>
         </ProjectOverlay>
