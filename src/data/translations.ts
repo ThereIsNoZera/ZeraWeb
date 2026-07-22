@@ -15,7 +15,7 @@ export const TRANSLATIONS = {
     confSub: "Identity design",
 
     otavanTitle: "Otavan:",
-    otavanSub: "Learning game prototype for children on the autism spectrum",
+    otavanSub: "Learning game prototype for children with autism",
 
     archiveBtn: "Check out Archive for more",
 

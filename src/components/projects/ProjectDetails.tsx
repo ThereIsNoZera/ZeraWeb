@@ -13,7 +13,11 @@ interface ProjectDetailsProps {
   onClose: () => void;
 }
 
-export function ProjectDetails({ project, lang, onClose }: ProjectDetailsProps) {
+export function ProjectDetails({
+  project,
+  lang,
+  onClose,
+}: ProjectDetailsProps) {
   if (!project) return null;
 
   let content;
@@ -41,7 +45,8 @@ export function ProjectDetails({ project, lang, onClose }: ProjectDetailsProps) 
           style={{
             position: "relative",
             width: PROJECT_OVERLAY_WIDTH,
-            minHeight: 1800,
+            minHeight: 2100,
+            backgroundColor: "#f0ebe8",
           }}
         >
           <ConferenceOverlay lang={lang} />
@@ -54,7 +59,8 @@ export function ProjectDetails({ project, lang, onClose }: ProjectDetailsProps) 
           style={{
             position: "relative",
             width: PROJECT_OVERLAY_WIDTH,
-            minHeight: 1400,
+            minHeight: 2000,
+            backgroundColor: "#f0ebe8",
           }}
         >
           <OtavanOverlay lang={lang} />
