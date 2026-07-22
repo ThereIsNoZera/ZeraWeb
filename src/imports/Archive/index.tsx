@@ -2,32 +2,32 @@ import svgPaths from "./svg-x2f1j61o2u";
 import imgPaperTexture2 from "./paper.webp";
 import imgPaperTexture3 from "./paper.webp";
 import imgPaperTexture15 from "./9661c6b2d7341c6a70ef7f7f35c77f749a835c0c.png";
-import img28Med2 from "./ae6b19486a8e935d71ba5d2c9b659572837db599.png";
-import imgSlot11 from "./68a1f7713a34f90c9860ebfef5701fff33f35df5.png";
-import imgFrame9811 from "./ebdf33dc32a409614d249ab33e162e646879006b.png";
-import img30Med2 from "./ad467fef015b31e1caa869c12d9bc8ed4367c29b.png";
-import img27Med11 from "./a93c67edbaaf76e0dfa78c7ecadc6636dfd16e0c.png";
-import imgDsc00942 from "./0cd8d401d61c074d7352ef8a73de1804b2c9e35f.png";
-import imgGoosh2 from "./d7fe8d0eb841a16e1d0ad14a8917d612bcbfd4eb.png";
-import imgPushing1 from "./1db1dad4ed9a3a76f9a139dc36e48f6750711f8d.png";
-import img12Med2 from "./e19c09542d9251e46b929b3d2a9ccc2725f92609.png";
-import imgImage39 from "./90a9d9e91f739e213f16e4d31004dec95daf9065.png";
-import img260714232545Image11 from "./05fe6245941107cd800a0e7fc3cac2fbc01ca7c0.png";
-import img34Med21 from "./f23eeb87731a403f7819a8387621b6b49bcb43c6.png";
-import imgImage121 from "./1bd8062d7efe55a9c1e67e24246b6796839496b1.png";
-import img24Medagain1 from "./254f2d0d3fde0404752d2b11f3f0902b5a0861c7.png";
-import imgSlot1 from "./200016f12c11f52bf9c0d6487b818e2f483fc413.png";
-import imgCsc06552 from "./6eed898d8119ad49b1648d50987f6425503e0290.png";
-import img32Med1 from "./79805ea57305fcad560cf8bbd858a37be670753d.png";
-import imgDsc06642 from "./b8b849ed7072f65f3277b6a3a9874e61b4b1a798.png";
-import img13Med21 from "./f63d8f61177e30016d7a7b2c7ce07542be4bf095.png";
-import imgMaskGroup1 from "./e2a94100885750e648fc3109b082f4d4efafcbbd.png";
-import imgMaskGroup11 from "./c0b232d48d87e6e1c660c50c42890e14a8895b18.png";
-import imgMaskGroup21 from "./bf3b1d9543c9880148bd5391f3726b03418a7bfa.png";
-import imgGol2 from "./042c871d39baed7067a2b498cbd52d7fbf3f8f30.png";
-import imgDsc01562 from "./ca0caa289a276c92c1ec042a1eeba3d269ee769d.png";
-import imgMummypng2 from "./ce3ce69faaf92275f67bc24e5051bae81476d38e.png";
-import img260714232624Image11 from "./6549f8e9bd3011946868026d08434043e511a814.png";
+import img28Med2 from "./id19.webp";
+import imgSlot11 from "./id20.png";
+import imgFrame9811 from "./id21.webp";
+import img30Med2 from "./id22.webp";
+import img27Med11 from "./id23.webp";
+import imgDsc00942 from "./id24.webp";
+import imgGoosh2 from "./id1.webp";
+import imgPushing1 from "./id2.webp";
+import img12Med2 from "./id3.webp";
+import imgImage39 from "./id4.webp";
+import img260714232545Image11 from "./id5.webp";
+import img34Med21 from "./id6.webp";
+import imgImage121 from "./id7.webp";
+import img24Medagain1 from "./id8.webp";
+import imgSlot1 from "./id9.png";
+import imgCsc06552 from "./id10.webp";
+import img32Med1 from "./id11.webp";
+import imgDsc06642 from "./id12.webp";
+import img13Med21 from "./id13.webp";
+import imgMaskGroup1 from "./id14a.webp";
+import imgMaskGroup11 from "./id14b.webp";
+import imgMaskGroup21 from "./id14c.webp";
+import imgGol2 from "./id15.webp";
+import imgDsc01562 from "./id16.webp";
+import imgMummypng2 from "./id17.webp";
+import img260714232624Image11 from "./id5.webp";
 
 function Frame2() {
   return (
@@ -38,7 +38,7 @@ function Frame2() {
       >
         <div className="-rotate-90 flex-none h-[100cqw]">
           <div
-            className="h-full relative w-[3103.121px]"
+            className="h-full relative w-[3103.121pxce3ce69faaf92275f67bc24e5051bae81476d38e.png]"
             data-name="Paper texture 2"
           >
             <img

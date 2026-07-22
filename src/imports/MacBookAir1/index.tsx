@@ -1,7 +1,7 @@
 import svgPaths from "./svg-nbyi5go133";
-import imgPaperTexture2 from "./c00ecb2679bcc6c33f3a9171c611b7425a8e1f1d.png";
+import imgPaperTexture2 from "./paper.webp";
 import imgFrame10051 from "./a_pickle.webp";
-import imgPictures from "./54a0e940378c6a1502721822cda0762796fa605b.png";
+import imgPictures from "./a_conf.webp";
 import img511 from "./Otavan.webp";
 import imgPictures1 from "./a_ergo.webp";
 import { imgGroup204 } from "./svg-0egr1";
