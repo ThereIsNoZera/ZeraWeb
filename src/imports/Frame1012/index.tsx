@@ -5,7 +5,6 @@ import imgPsd06CopySmall11 from "./65a9803d0f82dbe9f3f2f61bc2fcd1f0edb8b376.png"
 import imgGroup20011 from "./059ce71771c2c4c5ce5890c969bae651faa8e85e.png";
 import imgRafflePage111 from "./49071c537f9676247f93936e1cfbfc40bfcd2403.png";
 import img1280ToCrop1 from "./60e2e8c34e7ee5cd32ae8da5c00c5aa4ab9a0f9c.png";
-import img21 from "./b918abe3d6e32c4ffa0eab7627691ec4995de143.png";
 import imgCreateRaffle1221 from "./31ed18da6eaeba092ad2ef0fe6e21bb1d22e7fc3.png";
 import imgGroup20411 from "./05450046915739daf3ad69e6ea617c76ca6b85af.png";
 import imgImage2 from "./3a609b4a9da178482df955bae5060cb3898a1116.png";
@@ -163,23 +162,22 @@ function Frame3() {
       <ul className="block font-['Poppins:Regular',sans-serif] leading-[0] list-disc not-italic relative shrink-0 text-[16px] whitespace-nowrap">
         <li className="mb-[4px] ms-[24px]">
           <span className="leading-[normal]">
-            Multi-token support — expanding access beyond the Ergo ecosystem
+            Multi-token support: expanding access beyond the Ergo ecosystem
           </span>
         </li>
         <li className="mb-[4px] ms-[24px]">
           <span className="leading-[normal]">
-            Flexible raffle mechanics — enabling more dynamic participation
+            Flexible raffle mechanics: enabling more dynamic participation
           </span>
         </li>
         <li className="mb-[4px] ms-[24px]">
           <span className="leading-[normal]">
-            Community-driven credibility — introducing trust through user
-            signals
+            Community-driven credibility: introducing trust through user signals
           </span>
         </li>
         <li className="ms-[24px]">
           <span className="leading-[normal]">
-            Stronger visual identity — building confidence through design
+            Stronger visual identity: building confidence through design
           </span>
         </li>
       </ul>
@@ -266,7 +264,7 @@ function Frame11() {
             <g id="Line 33" />
           </svg>
         </div>
-        {/* <div
+        <div
           className="aspect-[194/159] relative shrink-0 w-full"
           data-name="Create Raffle 1-2 (2) 1"
         >
@@ -276,7 +274,7 @@ function Frame11() {
               className="absolute h-[203.23%] left-0 max-w-none top-[-37.15%] w-full"
               src={imgCreateRaffle1221}
             />
-          </div> */}
+          </div>
         </div>
       </div>
     </div>

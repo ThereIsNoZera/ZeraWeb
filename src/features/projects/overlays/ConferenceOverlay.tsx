@@ -27,7 +27,7 @@ const T = {
     b2: "The unified identity provided a professional visual framework.",
     b3: "The bilingual materials helped make information accessible to different audiences.",
     b4: "Clear hierarchy structured a large amount of information in an accessible way.",
-    b5: "The design supported on-site navigation — through name badges, speaker cards, and banners.",
+    b5: "The design supported on-site navigation through name badges, speaker cards, and banners.",
   },
   de: {
     subtitle:

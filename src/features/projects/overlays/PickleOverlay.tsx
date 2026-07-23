@@ -7,7 +7,6 @@ import imgFrame938 from "../../../imports/Frame998-1/9801a6542a796275cdc339a04c2
 import imgPickle311 from "../../../imports/Frame998-1/acdc7e48e14d806c2d917511651a7d4718f36049.png";
 import imgFrame939 from "../../../imports/Frame998-1/420b8be386865f3f5e2a2ebd6a2233e5c85005bd.png";
 
-
 const T = {
   en: {
     subtitle: "App concept & illustration for a decision-making app",
@@ -18,14 +17,17 @@ const T = {
     focusLabel: "Focus:",
     focusContent: "Character design, Onboarding, weighted voting",
     concept: "Concept",
-    conceptBody: "The name \"Pickle\" plays on the English idiom \"to be in a pickle\" while also nodding to the word \"pick.\" The app concept helps users make personal or shared decisions more easily through weighted voting.",
+    conceptBody:
+      'The name "Pickle" plays on the English idiom "to be in a pickle" while also nodding to the word "pick." The app concept helps users make personal or shared decisions more easily through weighted voting.',
     uxDecisions: "UX Decisions",
     ux1: "Flexible weighting of invited Pickers",
     ux2: "Equal default weighting for a smooth onboarding",
     ux3: "Hidden weighting to prevent social tension",
     illustration: "Illustration and visual language",
-    illustrationBody: "The Pickle characters translate the app's wordplay into a humorous visual language. They make the theme of decision-making feel lighter and more approachable, supporting the friendly, playful tone of the app.",
-    caption: "Pickle was one of my first independent concept projects — and a formative learning experience. I put core UI design principles, user-centred thinking, and visual brand awareness into practice: from the first idea through to finished illustration.",
+    illustrationBody:
+      "The Pickle characters translate the app's wordplay into a humorous visual language. They make the theme of decision-making feel lighter and more approachable, supporting the friendly, playful tone of the app.",
+    caption:
+      "Pickle was one of my first independent concept projects, and a formative learning experience. I put core UI design principles, user-centred thinking, and visual brand awareness into practice: from the first idea through to finished illustration.",
   },
   de: {
     subtitle: "App-Konzept & Illustration für eine Entscheidungs-App",
@@ -36,14 +38,17 @@ const T = {
     focusLabel: "Fokus:",
     focusContent: "Charakterdesign, Onboarding, gewichtete Abstimmung",
     concept: "Konzept",
-    conceptBody: "Der Name „Pickle\" basiert auf dem englischen Ausdruck „to be in a pickle\" und spielt gleichzeitig mit dem Wort „pick\". Das App-Konzept hilft Nutzer:innen, persönliche oder gemeinsame Entscheidungen durch gewichtete Abstimmungen einfacher zu treffen.",
+    conceptBody:
+      'Der Name „Pickle" basiert auf dem englischen Ausdruck „to be in a pickle" und spielt gleichzeitig mit dem Wort „pick". Das App-Konzept hilft Nutzer:innen, persönliche oder gemeinsame Entscheidungen durch gewichtete Abstimmungen einfacher zu treffen.',
     uxDecisions: "UX-Entscheidungen",
     ux1: "Flexible Gewichtung der eingeladenen Picker",
     ux2: "Gleiche Standardgewichtung für einen einfachen Einstieg",
     ux3: "Unsichtbare Gewichtung, um soziale Spannungen zu vermeiden",
     illustration: "Illustration und visuelle Sprache",
-    illustrationBody: "Die Pickle-Charaktere übersetzen das Wortspiel der App in eine humorvolle visuelle Sprache. Sie machen das Thema Entscheidungsfindung leichter und zugänglicher und unterstützen den freundlichen, spielerischen Charakter der Anwendung.",
-    caption: "Pickle war eines meiner ersten eigenständigen Konzeptprojekte, und eine prägende Lernerfahrung. Ich habe dabei grundlegende Prinzipien des UI-Designs, nutzerzentriertes Denken und visuelles Markenbewusstsein in der Praxis erprobt: von der ersten Idee bis zur fertigen Illustration.",
+    illustrationBody:
+      "Die Pickle-Charaktere übersetzen das Wortspiel der App in eine humorvolle visuelle Sprache. Sie machen das Thema Entscheidungsfindung leichter und zugänglicher und unterstützen den freundlichen, spielerischen Charakter der Anwendung.",
+    caption:
+      "Pickle war eines meiner ersten eigenständigen Konzeptprojekte, und eine prägende Lernerfahrung. Ich habe dabei grundlegende Prinzipien des UI-Designs, nutzerzentriertes Denken und visuelles Markenbewusstsein in der Praxis erprobt: von der ersten Idee bis zur fertigen Illustration.",
   },
 } as const;
 
@@ -59,13 +64,25 @@ function PickleHero() {
       }}
     >
       <div className="absolute h-[710px] left-[391px] shadow-[-7px_14px_20px_0px_rgba(0,0,0,0.32)] top-[212px] w-[350px]">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgOn2} />
+        <img
+          alt=""
+          className="absolute inset-0 max-w-none object-cover pointer-events-none size-full"
+          src={imgOn2}
+        />
       </div>
       <div className="absolute h-[625px] left-[751px] shadow-[-7px_14px_20px_0px_rgba(0,0,0,0.32)] top-[452px] w-[315px]">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgOn3} />
+        <img
+          alt=""
+          className="absolute inset-0 max-w-none object-cover pointer-events-none size-full"
+          src={imgOn3}
+        />
       </div>
       <div className="absolute h-[625px] left-[44px] shadow-[-7px_14px_20px_0px_rgba(0,0,0,0.32)] top-[25px] w-[331px]">
-        <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgOn1} />
+        <img
+          alt=""
+          className="absolute inset-0 max-w-none object-cover pointer-events-none size-full"
+          src={imgOn1}
+        />
       </div>
     </div>
   );
@@ -74,7 +91,9 @@ function PickleHero() {
 export default function PickleOverlay({ lang }: { lang: Lang }) {
   const t = T[lang];
   return (
-    <div style={{ position: "relative", width: OVERLAY_WIDTH, minHeight: 2300 }}>
+    <div
+      style={{ position: "relative", width: OVERLAY_WIDTH, minHeight: 2300 }}
+    >
       {/* Base background */}
       <div className="absolute inset-0 bg-[#f0ebe8]" />
 
@@ -88,11 +107,15 @@ export default function PickleOverlay({ lang }: { lang: Lang }) {
           {/* Title + body column */}
           <div className="content-stretch flex flex-col gap-[35px] items-start relative shrink-0 w-[333px]">
             <div className="content-stretch flex flex-col gap-[29px] items-start relative shrink-0 w-full">
-              <p className="[word-break:break-word] font-['Clash_Display:Medium',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#126503] text-[110px] w-full">Pickle</p>
+              <p className="[word-break:break-word] font-['Clash_Display:Medium',sans-serif] leading-[normal] not-italic relative shrink-0 text-[#126503] text-[110px] w-full">
+                Pickle
+              </p>
               <div className="relative shrink-0 w-full">
                 <div className="flex flex-row items-center justify-center size-full">
                   <div className="content-stretch flex items-center justify-center px-[5px] relative size-full">
-                    <p className="[word-break:break-word] flex-[1_0_0] font-['Poppins:Medium',sans-serif] leading-[normal] min-w-px not-italic relative text-[18px] text-black">{t.subtitle}</p>
+                    <p className="[word-break:break-word] flex-[1_0_0] font-['Poppins:Medium',sans-serif] leading-[normal] min-w-px not-italic relative text-[18px] text-black">
+                      {t.subtitle}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -101,7 +124,12 @@ export default function PickleOverlay({ lang }: { lang: Lang }) {
             <div className="flex h-[57.276px] items-center justify-center relative shrink-0 w-[57.588px]">
               <div className="flex-none rotate-75">
                 <div className="h-[47.113px] overflow-clip relative w-[46.672px]">
-                  <svg className="absolute block inset-0 size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 46.6736 47.1136">
+                  <svg
+                    className="absolute block inset-0 size-full"
+                    fill="none"
+                    preserveAspectRatio="none"
+                    viewBox="0 0 46.6736 47.1136"
+                  >
                     <path d={svgPaths.p1ab64b00} fill="#FDD765" />
                     <path d={svgPaths.pe39ef00} fill="#FDD765" />
                     <path d={svgPaths.p23fa5200} fill="#FDD765" />
@@ -113,18 +141,34 @@ export default function PickleOverlay({ lang }: { lang: Lang }) {
             </div>
             {/* Body text */}
             <div className="[word-break:break-word] content-stretch flex flex-col gap-[6px] items-start not-italic relative shrink-0 text-[#191919] w-[671px]">
-              <p className="font-['Poppins:Regular',sans-serif] leading-[normal] relative shrink-0 text-[16px] w-full">{t.body}</p>
-              <p className="font-['Pochaevsk:Regular',sans-serif] leading-[0] relative shrink-0 text-[0px] w-full">
-                <span className="font-['Poppins:Medium_Italic',sans-serif] italic leading-[24px] text-[17px]">{t.roleLabel} </span>
-                <span className="font-['Poppins:Regular',sans-serif] leading-[24px] text-[17px]">{t.roleContent}</span>
+              <p className="font-['Poppins:Regular',sans-serif] leading-[normal] relative shrink-0 text-[16px] w-full">
+                {t.body}
               </p>
               <p className="font-['Pochaevsk:Regular',sans-serif] leading-[0] relative shrink-0 text-[0px] w-full">
-                <span className="font-['Poppins:Medium_Italic',sans-serif] italic leading-[29px] text-[17px]">{t.toolsLabel}</span>
-                <span className="font-['Poppins:Regular',sans-serif] leading-[29px] text-[17px]"> Figma, Adobe Illustrator</span>
+                <span className="font-['Poppins:Medium_Italic',sans-serif] italic leading-[24px] text-[17px]">
+                  {t.roleLabel}{" "}
+                </span>
+                <span className="font-['Poppins:Regular',sans-serif] leading-[24px] text-[17px]">
+                  {t.roleContent}
+                </span>
               </p>
               <p className="font-['Pochaevsk:Regular',sans-serif] leading-[0] relative shrink-0 text-[0px] w-full">
-                <span className="font-['Poppins:Medium_Italic',sans-serif] italic leading-[24px] text-[17px]">{t.focusLabel}</span>
-                <span className="font-['Poppins:Regular',sans-serif] leading-[24px] text-[17px]"> {t.focusContent}</span>
+                <span className="font-['Poppins:Medium_Italic',sans-serif] italic leading-[29px] text-[17px]">
+                  {t.toolsLabel}
+                </span>
+                <span className="font-['Poppins:Regular',sans-serif] leading-[29px] text-[17px]">
+                  {" "}
+                  Figma, Adobe Illustrator
+                </span>
+              </p>
+              <p className="font-['Pochaevsk:Regular',sans-serif] leading-[0] relative shrink-0 text-[0px] w-full">
+                <span className="font-['Poppins:Medium_Italic',sans-serif] italic leading-[24px] text-[17px]">
+                  {t.focusLabel}
+                </span>
+                <span className="font-['Poppins:Regular',sans-serif] leading-[24px] text-[17px]">
+                  {" "}
+                  {t.focusContent}
+                </span>
               </p>
             </div>
           </div>
@@ -132,7 +176,11 @@ export default function PickleOverlay({ lang }: { lang: Lang }) {
           {/* Content column: swatches + concept + ux + illustration */}
           <div className="content-stretch flex gap-[38px] items-start relative shrink-0 w-full">
             <div className="h-[633px] relative shrink-0 w-[148px]">
-              <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgFrame938} />
+              <img
+                alt=""
+                className="absolute inset-0 max-w-none object-cover pointer-events-none size-full"
+                src={imgFrame938}
+              />
             </div>
             <div className="content-stretch flex flex-col gap-[32px] items-start relative shrink-0 w-[793px]">
               {/* Color swatches + Concept */}
@@ -150,30 +198,50 @@ export default function PickleOverlay({ lang }: { lang: Lang }) {
                   </div>
                 </div>
                 <div className="[word-break:break-word] content-stretch flex flex-col gap-[8px] items-start leading-[normal] not-italic relative shrink-0 text-black w-full">
-                  <p className="font-['Clash_Display:Medium',sans-serif] relative shrink-0 text-[22px] w-full">{t.concept}</p>
-                  <p className="font-['Poppins:Regular',sans-serif] relative shrink-0 text-[16px] w-full">{t.conceptBody}</p>
+                  <p className="font-['Clash_Display:Medium',sans-serif] relative shrink-0 text-[22px] w-full">
+                    {t.concept}
+                  </p>
+                  <p className="font-['Poppins:Regular',sans-serif] relative shrink-0 text-[16px] w-full">
+                    {t.conceptBody}
+                  </p>
                 </div>
               </div>
 
               {/* Phone screenshot + UX decisions */}
               <div className="content-stretch flex gap-[15px] items-center justify-center relative shrink-0 w-full">
                 <div className="h-[305px] relative shrink-0 w-[147px]">
-                  <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgPickle311} />
+                  <img
+                    alt=""
+                    className="absolute inset-0 max-w-none object-cover pointer-events-none size-full"
+                    src={imgPickle311}
+                  />
                 </div>
                 <div className="[word-break:break-word] content-stretch flex flex-col gap-[8px] items-start not-italic relative shrink-0 text-black w-[631px]">
-                  <p className="font-['Clash_Display:Medium',sans-serif] leading-[normal] relative shrink-0 text-[22px] w-full">{t.uxDecisions}</p>
+                  <p className="font-['Clash_Display:Medium',sans-serif] leading-[normal] relative shrink-0 text-[22px] w-full">
+                    {t.uxDecisions}
+                  </p>
                   <ul className="block font-['Poppins:Regular',sans-serif] leading-[0] list-disc relative shrink-0 text-[16px] w-full">
-                    <li className="mb-[6px] ms-[24px]"><span className="leading-[normal]">{t.ux1}</span></li>
-                    <li className="mb-[6px] ms-[24px]"><span className="leading-[normal]">{t.ux2}</span></li>
-                    <li className="ms-[24px]"><span className="leading-[normal]">{t.ux3}</span></li>
+                    <li className="mb-[6px] ms-[24px]">
+                      <span className="leading-[normal]">{t.ux1}</span>
+                    </li>
+                    <li className="mb-[6px] ms-[24px]">
+                      <span className="leading-[normal]">{t.ux2}</span>
+                    </li>
+                    <li className="ms-[24px]">
+                      <span className="leading-[normal]">{t.ux3}</span>
+                    </li>
                   </ul>
                 </div>
               </div>
 
               {/* Illustration section */}
               <div className="[word-break:break-word] content-stretch flex flex-col gap-[8px] items-start leading-[normal] not-italic relative shrink-0 text-black w-full">
-                <p className="font-['Clash_Display:Medium',sans-serif] relative shrink-0 text-[22px] w-full">{t.illustration}</p>
-                <p className="font-['Poppins:Regular',sans-serif] relative shrink-0 text-[16px] w-full">{t.illustrationBody}</p>
+                <p className="font-['Clash_Display:Medium',sans-serif] relative shrink-0 text-[22px] w-full">
+                  {t.illustration}
+                </p>
+                <p className="font-['Poppins:Regular',sans-serif] relative shrink-0 text-[16px] w-full">
+                  {t.illustrationBody}
+                </p>
               </div>
             </div>
           </div>
@@ -182,9 +250,15 @@ export default function PickleOverlay({ lang }: { lang: Lang }) {
         {/* Bottom: wide image strip + caption */}
         <div className="content-stretch flex flex-col gap-[14px] items-center relative shrink-0 w-full">
           <div className="aspect-[1509/464] relative shrink-0 w-full">
-            <img alt="" className="absolute inset-0 max-w-none object-cover pointer-events-none size-full" src={imgFrame939} />
+            <img
+              alt=""
+              className="absolute inset-0 max-w-none object-cover pointer-events-none size-full"
+              src={imgFrame939}
+            />
           </div>
-          <p className="[word-break:break-word] font-['Poppins:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[16px] text-black text-center w-[795px]">{t.caption}</p>
+          <p className="[word-break:break-word] font-['Poppins:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[16px] text-black text-center w-[795px]">
+            {t.caption}
+          </p>
         </div>
       </div>
     </div>

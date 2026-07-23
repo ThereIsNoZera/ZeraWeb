@@ -1,25 +1,35 @@
 import { CV_SCROLL, PROJECTS_SCROLL } from "../../config/portfolio";
 import { TRANSLATIONS, type Lang } from "../../data/translations";
 import type { PageId } from "../../types/navigation";
+import { YellowStar } from "../portfolio/YellowStar";
 
-interface NavItemProps {
+interface HeaderLinkProps {
   label: string;
   active: boolean;
   onClick: () => void;
 }
 
-function NavItem({ label, active, onClick }: NavItemProps) {
+function HeaderLink({ label, active, onClick }: HeaderLinkProps) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className={`content-stretch flex h-[12px] items-center justify-center px-[4px] relative cursor-pointer select-none border-0 text-black${active ? " bg-[rgba(226,187,0,0.8)] pb-[8px]" : " bg-transparent"}`}
+      aria-current={active ? "page" : undefined}
+      className="relative inline-flex h-[28px] cursor-pointer items-center justify-center whitespace-nowrap border-0 bg-transparent p-0 font-clash text-[20px] font-normal leading-none tracking-[0.4px] text-black"
     >
       <span
-        className="[word-break:break-word] font-clash font-normal leading-[normal] not-italic relative shrink-0 text-[20px] tracking-[0.8px] whitespace-nowrap"
-        style={{ fontWeight: 400 }}
+        className={`relative inline-flex h-full items-center justify-center px-[4px] ${
+          active ? "header-link-active" : ""
+        }`}
       >
-        {label}
+        {active && (
+          <span
+            aria-hidden="true"
+            className="absolute bottom-[3px] left-0 right-0 h-[8px] bg-[hsla(50,100%,44%,1)]"
+          />
+        )}
+
+        <span className="relative z-10">{label}</span>
       </span>
     </button>
   );
@@ -43,6 +53,7 @@ export function SiteHeader({
   onNavigateToSection,
 }: SiteHeaderProps) {
   const text = TRANSLATIONS[lang];
+
   const activeSection =
     page === "archive"
       ? "archive"
@@ -56,96 +67,94 @@ export function SiteHeader({
     <header
       style={{
         position: "fixed",
-        top: 20,
+        top: 25,
         left: "50%",
         transform: "translateX(-50%)",
-        width: 1280,
+        width: "min(1000px, calc(100vw - 32px))",
         zIndex: 1000,
       }}
     >
-      <div className="backdrop-blur-[4px] bg-[rgba(212,211,204,0.9)] content-stretch flex items-center justify-between px-[22px] py-[12px] relative w-full">
+      <div className="relative flex h-[56px] w-full items-center justify-between bg-[rgba(212,211,204,0.88)] px-[22px] py-[12px] backdrop-blur-[4px]">
+        {/* Border and shadow */}
         <div
-          aria-hidden
-          className="absolute border-2 border-black border-solid inset-0 pointer-events-none shadow-[2px_4px_1px_0px_rgba(0,0,0,0.25)]"
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 border-[2px] border-solid border-black shadow-[2px_4px_1px_rgba(0,0,0,0.25)]"
         />
 
         <button
           type="button"
-          className="h-[25px] relative shrink-0 w-[80px] bg-transparent border-0 p-0 cursor-pointer"
           onClick={onToggleArchive}
+          aria-label="Open portfolio home"
+          className="relative z-10 flex size-[36px] items-center justify-center border-0 bg-transparent p-0 cursor-pointer"
         >
-          <span
-            className="[word-break:break-word] absolute font-clash font-normal leading-[normal] left-0 not-italic text-[20px] text-black top-0 tracking-[0.8px] whitespace-nowrap"
-            style={{
-              fontWeight: 400,
-              ...(activeSection === "archive"
-                ? {
-                    borderBottom: "3px solid rgba(226,187,0,0.8)",
-                    paddingBottom: 4,
-                  }
-                : {}),
-            }}
-          >
-            {text.navArchive}
-          </span>
+          <YellowStar color="hsla(50, 100%, 44%, 1)" />
         </button>
 
+        {/* Center navigation */}
         <nav
           aria-label="Portfolio sections"
-          className="content-stretch flex gap-[17px] items-center relative shrink-0"
+          className="absolute left-1/2 top-1/2 z-10 flex -translate-x-1/2 -translate-y-1/2 items-center gap-[12px]"
         >
-          <NavItem
+          <HeaderLink
             label={text.navProjects}
             active={activeSection === "projects"}
             onClick={() => onNavigateToSection(PROJECTS_SCROLL)}
           />
-          <span
-            className="font-clash font-normal leading-[normal] not-italic text-[20px] text-black tracking-[0.8px]"
-            style={{ fontWeight: 400 }}
-          >
+
+          <span className="font-clash text-[20px] font-normal text-black">
             |
           </span>
-          <NavItem
+
+          <HeaderLink
             label={text.navCV}
             active={activeSection === "cv"}
             onClick={() => onNavigateToSection(CV_SCROLL)}
           />
-          <span
-            className="font-clash font-normal leading-[normal] not-italic text-[20px] text-black tracking-[0.8px]"
-            style={{ fontWeight: 400 }}
-          >
+
+          <span className="font-clash text-[20px] font-normal text-black">
             |
           </span>
-          <NavItem label={text.navVisit} active={false} onClick={() => {}} />
+
+          <HeaderLink label={text.navVisit} active={false} onClick={() => {}} />
+
+          <span className="font-clash text-[20px] font-normal text-black">
+            •
+          </span>
+
+          <HeaderLink
+            label={text.navArchive}
+            active={activeSection === "archive"}
+            onClick={onToggleArchive}
+          />
         </nav>
 
-        <div
-          aria-label="Language selector"
-          className="content-stretch flex gap-[10px] items-center relative shrink-0"
-        >
+        {/* Language selector */}
+        <div className="relative z-10 ml-auto flex items-center gap-[6px]">
           <button
             type="button"
             onClick={() => onLanguageChange("de")}
-            className="font-clash font-normal leading-[normal] not-italic text-[20px] text-black tracking-[0.8px] cursor-pointer select-none border-0 bg-transparent p-0"
-            style={{ fontWeight: 400 }}
+            className="border-0 bg-transparent p-0 font-clash text-[20px] font-normal leading-none text-black cursor-pointer"
           >
             DE
           </button>
+
           <button
             type="button"
-            aria-label={`Switch language to ${lang === "en" ? "German" : "English"}`}
             onClick={() => onLanguageChange(lang === "en" ? "de" : "en")}
-            className={`bg-[#383836] content-stretch flex h-[32px] items-center ${lang === "en" ? "justify-end" : "justify-start"} px-[4px] py-[2px] relative rounded-[100px] shrink-0 w-[52px] cursor-pointer border-0`}
+            aria-label={`Switch language to ${
+              lang === "en" ? "German" : "English"
+            }`}
+            className={`relative flex h-[24px] w-[52px] items-center rounded-full border-0 bg-[#383836] px-[3px] cursor-pointer ${
+              lang === "en" ? "justify-end" : "justify-start"
+            }`}
           >
-            <span className="bg-white content-stretch flex items-center justify-center overflow-clip p-[11px] relative rounded-[24px] shrink-0">
-              <span className="relative rounded-[23px] shrink-0 size-[2px]" />
-            </span>
+            <span className="block size-[18px] rounded-full bg-white" />
           </button>
+
           <button
             type="button"
             onClick={() => onLanguageChange("en")}
-            className="font-clash font-normal leading-[normal] not-italic text-[20px] text-black tracking-[0.8px] cursor-pointer select-none border-0 bg-transparent p-0"
-            style={{ fontWeight: 400 }}
+            className="border-0 bg-transparent p-0 font-clash text-[20px] font-normal leading-none text-black cursor-pointer"
           >
             EN
           </button>

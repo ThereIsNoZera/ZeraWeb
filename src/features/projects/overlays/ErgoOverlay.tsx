@@ -26,10 +26,10 @@ const T = {
     pb5: "Basic interface: minimal hierarchy and inconsistent structure",
     pb6: "Non-scalable design system: slowing down future iterations",
     solutionSub: "A redesign built for scale, trust, and adoption.",
-    sb1: "Multi-token support — expanding access beyond the Ergo ecosystem",
-    sb2: "Flexible raffle mechanics — enabling more dynamic participation",
-    sb3: "Community-driven credibility — introducing trust through user signals",
-    sb4: "Stronger visual identity — building confidence through design",
+    sb1: "Multi-token support: expanding access beyond the Ergo ecosystem",
+    sb2: "Flexible raffle mechanics: enabling more dynamic participation",
+    sb3: "Community-driven credibility: introducing trust through user signals",
+    sb4: "Stronger visual identity: building confidence through design",
     newVersion: "New Version",
     userFlowDesc:
       "Mapping the core interactions across raffle creation, participation, and wallet integration, plus early stage wireframing.",
@@ -67,15 +67,15 @@ const T = {
     pb5: "Einfaches Interface: wenig Hierarchie und inkonsistente Struktur",
     pb6: "Kein skalierbares Design-System: verlangsamt künftige Iterationen",
     solutionSub: "Ein Redesign für Skalierbarkeit, Vertrauen und Akzeptanz.",
-    sb1: "Multi-Token-Unterstützung — Zugang über das Ergo-Ökosystem hinaus",
-    sb2: "Flexible Verlosungsmechanik — dynamischere Beteiligung ermöglicht",
-    sb3: "Community-getragene Glaubwürdigkeit — Vertrauen durch Nutzersignale",
-    sb4: "Stärkere visuelle Identität — Vertrauen durch Design aufgebaut",
+    sb1: "Multi-Token-Unterstützung: Zugang über das Ergo-Ökosystem hinaus",
+    sb2: "Flexible Verlosungsmechanik: dynamischere Beteiligung ermöglicht",
+    sb3: "Community-getragene Glaubwürdigkeit: Vertrauen durch Nutzersignale",
+    sb4: "Stärkere visuelle Identität: Vertrauen durch Design aufgebaut",
     newVersion: "Neue Version",
     userFlowDesc:
       "Kerninteraktionen bei Erstellung, Teilnahme und Wallet-Integration abgebildet, plus erste Wireframes.",
     handCaption1:
-      "Menschliche Hände stehen im Mittelpunkt der Illustrationen — sie berühren Coins, spenden und bewegen sich durch das System.",
+      "Menschliche Hände stehen im Mittelpunkt der Illustrationen: sie berühren Coins, spenden und bewegen sich durch das System.",
     handCaption2:
       "Eine einfache Weise, Zugänglichkeit, Community und Multi-Token-Support zu vermitteln.",
     raffleCreation1: "Raffle",
@@ -83,7 +83,7 @@ const T = {
     distribute:
       "Nutzer:innen können bestimmen, wie die Gewinne verteilt werden.",
     distributeDetail:
-      "Durch mehrere Körbe, die leer oder mit Anteilen des Gewinnpotts versehen werden können. Jeder Korb steht für eine mögliche Gewinnerin — so lassen sich Preise auf mehrere aufteilen.",
+      "Durch mehrere Körbe, die leer oder mit Anteilen des Gewinnpotts versehen werden können. Jeder Korb steht für eine mögliche Gewinnerin, so lassen sich Preise auf mehrere aufteilen.",
     flexibility:
       "Das schafft Flexibilität. Von einem großen Hauptpreis bis zu vielen kleineren Belohnungen.",
     financial:
@@ -95,7 +95,7 @@ const T = {
     vote2: "Get Ticket &",
     vote3: "Add Gift",
     responsiveDesc:
-      "Die Plattform wurde für ein konsistentes und intuitives Erlebnis auf Desktop, Tablet und Mobilgerät gestaltet. Jeder Screen wurde sorgfältig angepasst, um Bedienbarkeit, Lesbarkeit und visuelle Stimmigkeit zu wahren — auf jedem Gerät.",
+      "Die Plattform wurde für ein konsistentes und intuitives Erlebnis auf Desktop, Tablet und Mobilgerät gestaltet. Jeder Screen wurde sorgfältig angepasst, um Bedienbarkeit, Lesbarkeit und visuelle Stimmigkeit zu wahren auf jedem Gerät.",
   },
 } as const;
 

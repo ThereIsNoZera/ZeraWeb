@@ -1,4 +1,4 @@
-# Zera — Design Portfolio
+# Zera Design Portfolio
 
 A React + Vite portfolio originally created with Figma Make.
 
