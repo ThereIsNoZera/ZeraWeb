@@ -92,7 +92,7 @@ export default function PickleOverlay({ lang }: { lang: Lang }) {
   const t = T[lang];
   return (
     <div
-      style={{ position: "relative", width: OVERLAY_WIDTH, minHeight: 2300 }}
+      style={{ position: "relative", width: OVERLAY_WIDTH, minHeight: 2400 }}
     >
       {/* Base background */}
       <div className="absolute inset-0 bg-[#f0ebe8]" />
