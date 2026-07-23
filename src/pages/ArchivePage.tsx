@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ArchiveCard } from "../components/archive/ArchiveCard";
 import { ArchiveFilters } from "../components/archive/ArchiveFilters";
 import { ArchiveLightbox } from "../components/archive/ArchiveLightbox";
+import imgPaperOverlay from "../imports/paper-texture-web-fallback.jpg";
 import {
   getArchiveColumns,
   type ArchiveCardData,
@@ -24,7 +25,20 @@ export default function ArchivePage() {
     <>
       <main className="relative min-h-screen overflow-x-hidden bg-[#f5f3eb]">
         <div
-          className="mx-auto"
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-0"
+          style={{
+            backgroundImage: `url(${imgPaperOverlay})`,
+            backgroundRepeat: "repeat-y",
+            backgroundSize: "100% auto",
+            backgroundPosition: "top center",
+            mixBlendMode: "multiply",
+            opacity: 0.2,
+          }}
+        />
+
+        <div
+          className="relative z-10 mx-auto"
           style={{
             maxWidth: 1280,
             paddingTop: 100,
