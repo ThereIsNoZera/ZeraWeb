@@ -1,0 +1,9 @@
+Put the full-size images for each archive lightbox in this folder.
+
+Suggested naming:
+- archive-08-main.webp
+- archive-08-detail-02.webp
+- archive-08-detail-03.webp
+
+Then import them in:
+src/data/archiveLightboxData.ts
