@@ -22,15 +22,20 @@ export function CvButton() {
 
 interface ArchiveButtonProps {
   label: string;
-  onClick: () => void;
+  onClick?: () => void;
+  type?: "button" | "submit";
 }
 
-export function ArchiveButton({ label, onClick }: ArchiveButtonProps) {
+export function ArchiveButton({
+  label,
+  onClick,
+  type = "button",
+}: ArchiveButtonProps) {
   const [pressed, setPressed] = useState(false);
 
   return (
     <button
-      type="button"
+      type={type}
       onClick={onClick}
       style={{
         display: "inline-block",

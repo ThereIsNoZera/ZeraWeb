@@ -9,6 +9,7 @@ import { HeroSection } from "../components/portfolio/HeroSection";
 import { PortfolioPath } from "../components/portfolio/PortfolioPath";
 import { ProjectsSection } from "../components/portfolio/ProjectsSection";
 import { SiteFooter } from "../components/layout/SiteFooter";
+import { VisitCardsSection } from "../components/portfolio/VisitCardsSection";
 
 const FOOTER_HEIGHT = 230;
 
@@ -34,9 +35,8 @@ export default function HomePage({
       style={{ minHeight: PAGE_HEIGHT + FOOTER_HEIGHT }}
     >
       <div
-        className="pointer-events-none absolute inset-x-0 top-0"
+        className="pointer-events-none absolute inset-0"
         style={{
-          height: PAGE_HEIGHT + FOOTER_HEIGHT,
           zIndex: 4,
           opacity: 0.2,
         }}
@@ -77,7 +77,8 @@ export default function HomePage({
         </div>
       </div>
 
-      {/* Footer goes here */}
+      <VisitCardsSection />
+
       <SiteFooter />
     </main>
   );
