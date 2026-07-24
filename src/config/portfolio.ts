@@ -21,6 +21,6 @@ export const PATH_START_X = PATH_ORIGIN_X + 729.5 * PATH_SCALE_X;
 export const PATH_START_Y = PATH_ORIGIN_Y;
 export const STAR_GLIDE_END = 200;
 export const STAR_SIZE_END = 480;
-export const HORIZONTAL_PATH_SPEED = 1.5;
+export const HORIZONTAL_PATH_SPEED = 7;
 
 export const PROJECT_OVERLAY_WIDTH = 1100;

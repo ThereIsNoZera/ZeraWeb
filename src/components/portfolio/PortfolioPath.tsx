@@ -76,7 +76,7 @@ export function PortfolioPath({ pathRef, animation }: PortfolioPathProps) {
           top: animation.centerY - animation.size / 2,
           width: animation.size,
           height: animation.size,
-          zIndex: 1,
+          zIndex: 2,
         }}
       >
         <div

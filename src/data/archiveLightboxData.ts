@@ -2,6 +2,8 @@ import type { ArchiveCardData } from "./archiveItems";
 
 import img10 from "../imports/Archive/details/10.webp";
 
+import img20 from "../imports/Archive/details/20.webp";
+
 import img30 from "../imports/Archive/details/30.webp";
 import img31 from "../imports/Archive/details/31.webp";
 import img32 from "../imports/Archive/details/32.webp";
@@ -16,6 +18,13 @@ import img61 from "../imports/Archive/details/61.webp";
 import img62 from "../imports/Archive/details/62.webp";
 import img63 from "../imports/Archive/details/63.webp";
 import img64 from "../imports/Archive/details/64.webp";
+
+import img70 from "../imports/Archive/details/70.webp";
+import img71 from "../imports/Archive/details/71.webp";
+import img72 from "../imports/Archive/details/72.webp";
+import img73 from "../imports/Archive/details/73.webp";
+import img74 from "../imports/Archive/details/74.webp";
+import img75 from "../imports/Archive/details/75.webp";
 
 import img80 from "../imports/Archive/details/80.webp";
 import img81 from "../imports/Archive/details/81.webp";
@@ -68,10 +77,20 @@ import img171 from "../imports/Archive/details/171.webp";
 import img172 from "../imports/Archive/details/172.webp";
 import img173 from "../imports/Archive/details/173.webp";
 
+import img180 from "../imports/Archive/details/170.webp";
+// import img181 from "../imports/Archive/details/171.webp";
+import img182 from "../imports/Archive/details/172.webp";
+import img183 from "../imports/Archive/details/173.webp";
+
+import img190 from "../imports/Archive/details/190.webp";
+import img191 from "../imports/Archive/details/191.webp";
+
 import img200 from "../imports/Archive/details/200.webp";
 import img201 from "../imports/Archive/details/201.webp";
 import img202 from "../imports/Archive/details/202.webp";
 import img203 from "../imports/Archive/details/203.webp";
+
+import img220 from "../imports/Archive/details/220.webp";
 
 import img240 from "../imports/Archive/details/240.webp";
 import img241 from "../imports/Archive/details/241.webp";
@@ -124,6 +143,20 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
     images: [
       {
         src: img10,
+        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+      },
+    ],
+    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    mainImageFit: "contain",
+    thumbnailFit: "cover",
+    mainImageWidth: "min(1100px, calc(100vw - 184px))",
+    mainImageBackground: "transparent",
+  },
+
+  2: {
+    images: [
+      {
+        src: img20,
         caption: "Color pencil, live model sketching, 56 × 42 cm.",
       },
     ],
@@ -202,6 +235,40 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
       },
       {
         src: img64,
+        caption: "Second pose, color pencil on paper.",
+      },
+    ],
+    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    mainImageFit: "contain",
+    thumbnailFit: "cover",
+    mainImageWidth: "min(1100px, calc(100vw - 184px))",
+    mainImageBackground: "transparent",
+  },
+
+  7: {
+    images: [
+      {
+        src: img70,
+        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+      },
+      {
+        src: img71,
+        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+      },
+      {
+        src: img72,
+        caption: "Detail study of the hands.",
+      },
+      {
+        src: img73,
+        caption: "Second pose, color pencil on paper.",
+      },
+      {
+        src: img74,
+        caption: "Second pose, color pencil on paper.",
+      },
+      {
+        src: img75,
         caption: "Second pose, color pencil on paper.",
       },
     ],
@@ -476,6 +543,50 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
     mainImageBackground: "transparent",
   },
 
+  18: {
+    images: [
+      {
+        src: img180,
+        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+      },
+      // {
+      //   src: img181,
+      //   caption: "Color pencil, live model sketching, 56 × 42 cm.",
+      // },
+      {
+        src: img182,
+        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+      },
+      {
+        src: img183,
+        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+      },
+    ],
+    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    mainImageFit: "contain",
+    thumbnailFit: "cover",
+    mainImageWidth: "min(1100px, calc(100vw - 184px))",
+    mainImageBackground: "transparent",
+  },
+
+  19: {
+    images: [
+      {
+        src: img190,
+        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+      },
+      {
+        src: img191,
+        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+      },
+    ],
+    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    mainImageFit: "contain",
+    thumbnailFit: "cover",
+    mainImageWidth: "min(1100px, calc(100vw - 184px))",
+    mainImageBackground: "transparent",
+  },
+
   20: {
     images: [
       {
@@ -493,6 +604,20 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
       {
         src: img203,
         caption: "Second pose, color pencil on paper.",
+      },
+    ],
+    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    mainImageFit: "contain",
+    thumbnailFit: "cover",
+    mainImageWidth: "min(1100px, calc(100vw - 184px))",
+    mainImageBackground: "transparent",
+  },
+
+  22: {
+    images: [
+      {
+        src: img220,
+        caption: "Color pencil, live model sketching, 56 × 42 cm.",
       },
     ],
     caption: "Color pencil, Live model sketching, 56 × 42 cm.",

@@ -1,3 +1,34 @@
-@import './fonts.css';
-@import './tailwind.css';
-@import './theme.css';
+@import "./fonts.css";
+@import "./tailwind.css";
+@import "./theme.css";
+
+/* Hide the native cursor only after CustomCursor has successfully loaded. */
+html.custom-cursor-enabled,
+html.custom-cursor-enabled * {
+  cursor: none !important;
+}
+
+.custom-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  z-index: 2147483647;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(-100px, -100px, 0);
+  transition: opacity 120ms ease;
+  will-change: transform;
+}
+
+.custom-cursor--visible {
+  opacity: 1;
+}
+
+.custom-cursor__scale {
+  width: 44px;
+  height: 44px;
+  transform-origin: center;
+  transition: transform 120ms ease;
+}

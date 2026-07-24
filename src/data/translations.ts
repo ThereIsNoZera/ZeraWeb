@@ -3,7 +3,8 @@ export type Lang = "en" | "de";
 export const TRANSLATIONS = {
   en: {
     hello: "Hello, This is",
-    description: "Design Student \nUI/UX design Illustration communication",
+    description:
+      "I turn ideas into products with personality. \nUI/UX · Graphic Design · Illustration · Communication",
 
     ergoTitle: "Ergo Raffle:",
     ergoSub: "Redesign of a digital platform",
@@ -27,7 +28,8 @@ export const TRANSLATIONS = {
 
   de: {
     hello: "Hallo, ich bin",
-    description: "Designstudentin \nUI/UX Design Illustration Kommunikation",
+    description:
+      "Designstudentin \nUI/UX · Grafikdesign · Illustration · Kommunikation",
 
     ergoTitle: "Ergo Raffle:",
     ergoSub: "Redesign einer digitalen Plattform",

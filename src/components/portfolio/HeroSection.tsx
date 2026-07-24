@@ -33,7 +33,7 @@ export function HeroSection({ hello, description }: HeroSectionProps) {
           left: 44,
           top: 278,
           width: 662,
-          zIndex: 2,
+          zIndex: 3,
         }}
       >
         <div

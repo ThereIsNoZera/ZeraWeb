@@ -29,7 +29,7 @@ export default function HomePage({
     <main style={{ minHeight: PAGE_HEIGHT }}>
       <div
         className="absolute inset-x-0 top-0 pointer-events-none"
-        style={{ height: PAGE_HEIGHT, zIndex: 2, opacity: 0.2 }}
+        style={{ height: PAGE_HEIGHT, zIndex: 4, opacity: 0.2 }}
       >
         <div
           className="size-full"
@@ -52,7 +52,7 @@ export default function HomePage({
         <ProjectsSection text={text} onOpenProject={onOpenProject} />
         <CvSection />
 
-        <div className="absolute" style={{ left: 300, top: 3260, zIndex: 3 }}>
+        <div className="absolute" style={{ left: 569, top: 3265, zIndex: 3 }}>
           <ArchiveButton label={text.archiveBtn} onClick={onOpenArchive} />
         </div>
       </div>

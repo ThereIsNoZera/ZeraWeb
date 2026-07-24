@@ -1,4 +1,6 @@
 import { useCallback, useState } from "react";
+
+import { CustomCursor } from "../components/ui/CustomCursor";
 import { SiteHeader } from "../components/layout/SiteHeader";
 import { ProjectDetails } from "../components/projects/ProjectDetails";
 import type { Lang } from "../data/translations";
@@ -16,7 +18,9 @@ export default function App() {
   const closeProject = useCallback(() => setActiveProject(null), []);
 
   const scrollToTop = useCallback(() => {
-    requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "smooth" }));
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
   }, []);
 
   const toggleArchive = useCallback(() => {
@@ -35,13 +39,18 @@ export default function App() {
     // Wait for the homepage to mount before measuring and scrolling.
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-        window.scrollTo({ top: scrollPosition, behavior: "smooth" });
+        window.scrollTo({
+          top: scrollPosition,
+          behavior: "smooth",
+        });
       });
     });
   }, []);
 
   return (
     <div className="relative bg-[#f5f3eb]" style={{ overflowX: "hidden" }}>
+      <CustomCursor />
+
       <SiteHeader
         scrollY={scrollY}
         lang={lang}

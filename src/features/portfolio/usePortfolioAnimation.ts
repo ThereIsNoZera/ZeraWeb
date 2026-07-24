@@ -61,10 +61,10 @@ const TOTAL_SCROLL_UNITS =
   SEGMENTS[SEGMENTS.length - 1].scrollLength;
 
 const COLOR_TRANSITIONS = [
-  { start: 0.07, end: 0.11, from: "#FFD300", to: "#D32B14" },
-  { start: 0.4, end: 0.46, from: "#D32B14", to: "#36AA09" },
-  { start: 0.61, end: 0.67, from: "#36AA09", to: "#1E6998" },
-  { start: 0.72, end: 0.78, from: "#1E6998", to: "#ABFF4C" },
+  { start: 0.03, end: 0.08, from: "#FFD300", to: "#D32B14" },
+  { start: 0.25, end: 0.35, from: "#D32B14", to: "#36AA09" },
+  { start: 0.55, end: 0.61, from: "#36AA09", to: "#1E6998" },
+  { start: 0.66, end: 0.78, from: "#1E6998", to: "#ABFF4C" },
   { start: 0.89, end: 0.95, from: "#ABFF4C", to: "#FFD300" },
 ] as const;
 
@@ -76,8 +76,9 @@ function scrollToPathProgress(progress: number) {
       const segmentProgress =
         (scrollPosition - segment.scrollStart) / segment.scrollLength;
       return (
-        segment.pathStart + segmentProgress * segment.pathLength
-      ) / TOTAL_PATH_LENGTH;
+        (segment.pathStart + segmentProgress * segment.pathLength) /
+        TOTAL_PATH_LENGTH
+      );
     }
   }
 
@@ -144,7 +145,7 @@ export function usePortfolioAnimation(scrollY: number) {
     centerY = lerp(HERO_STAR_CENTER_Y, PATH_START_Y, glideProgress);
     rotation = lerp(0, 75, sizeProgress);
   } else {
-    const maximumScroll = PAGE_HEIGHT - 900;
+    const maximumScroll = 3050;
     const rawProgress = clamp(
       (scrollY - STAR_GLIDE_END) / (maximumScroll - STAR_GLIDE_END),
       0,
