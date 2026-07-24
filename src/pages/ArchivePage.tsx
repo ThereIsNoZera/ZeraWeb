@@ -4,6 +4,7 @@ import { ArchiveCard } from "../components/archive/ArchiveCard";
 import { ArchiveFilters } from "../components/archive/ArchiveFilters";
 import { ArchiveLightbox } from "../components/archive/ArchiveLightbox";
 import imgPaperOverlay from "../imports/paper-texture-web-fallback.jpg";
+import { SiteFooter } from "../components/layout/SiteFooter";
 import {
   getArchiveColumns,
   type ArchiveCardData,
@@ -76,6 +77,7 @@ export default function ArchivePage() {
             ))}
           </div>
         </div>
+        <SiteFooter />
       </main>
 
       {openCard && (

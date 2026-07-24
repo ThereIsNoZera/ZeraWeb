@@ -35,14 +35,11 @@ export function CustomCursor() {
     document.documentElement.classList.add("custom-cursor-enabled");
 
     const updatePointerMode = (x: number, y: number) => {
-      const elementsUnderCursor = document.elementsFromPoint(x, y);
+      const topElement = document.elementFromPoint(x, y);
 
-      const isInteractive = elementsUnderCursor.some((element) => {
-        return (
-          element.matches(INTERACTIVE_SELECTOR) ||
-          Boolean(element.closest(INTERACTIVE_SELECTOR))
-        );
-      });
+      const isInteractive =
+        topElement instanceof Element &&
+        Boolean(topElement.closest(INTERACTIVE_SELECTOR));
 
       setIsPointer(isInteractive);
     };

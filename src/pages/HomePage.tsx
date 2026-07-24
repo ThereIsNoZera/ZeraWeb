@@ -8,6 +8,9 @@ import { CvSection } from "../components/portfolio/CvSection";
 import { HeroSection } from "../components/portfolio/HeroSection";
 import { PortfolioPath } from "../components/portfolio/PortfolioPath";
 import { ProjectsSection } from "../components/portfolio/ProjectsSection";
+import { SiteFooter } from "../components/layout/SiteFooter";
+
+const FOOTER_HEIGHT = 230;
 
 interface HomePageProps {
   scrollY: number;
@@ -26,10 +29,17 @@ export default function HomePage({
   const { pathRef, animation } = usePortfolioAnimation(scrollY);
 
   return (
-    <main style={{ minHeight: PAGE_HEIGHT }}>
+    <main
+      className="relative"
+      style={{ minHeight: PAGE_HEIGHT + FOOTER_HEIGHT }}
+    >
       <div
-        className="absolute inset-x-0 top-0 pointer-events-none"
-        style={{ height: PAGE_HEIGHT, zIndex: 4, opacity: 0.2 }}
+        className="pointer-events-none absolute inset-x-0 top-0"
+        style={{
+          height: PAGE_HEIGHT + FOOTER_HEIGHT,
+          zIndex: 4,
+          opacity: 0.2,
+        }}
       >
         <div
           className="size-full"
@@ -48,14 +58,27 @@ export default function HomePage({
         style={{ width: 1280, height: PAGE_HEIGHT }}
       >
         <HeroSection hello={text.hello} description={text.description} />
+
         <PortfolioPath pathRef={pathRef} animation={animation} />
+
         <ProjectsSection text={text} onOpenProject={onOpenProject} />
+
         <CvSection />
 
-        <div className="absolute" style={{ left: 569, top: 3265, zIndex: 3 }}>
+        <div
+          className="absolute"
+          style={{
+            left: 569,
+            top: 3265,
+            zIndex: 3,
+          }}
+        >
           <ArchiveButton label={text.archiveBtn} onClick={onOpenArchive} />
         </div>
       </div>
+
+      {/* Footer goes here */}
+      <SiteFooter />
     </main>
   );
 }
