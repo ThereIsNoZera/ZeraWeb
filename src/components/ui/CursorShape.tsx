@@ -12,13 +12,13 @@ export default function CursorShape({
   return (
     <div className={`relative size-[44px] ${className}`}>
       <div
-        className="absolute left-1/2 top-1/2 rounded-full bg-[#FFD300]"
+        className="absolute left-1/2 top-1/2 rounded-full bg-[#ffffff]"
         style={{
           width: isPointer ? 44 : 0,
           height: isPointer ? 44 : 0,
           opacity: isPointer ? 0.92 : 0,
           transform: "translate(-50%, -50%)",
-          mixBlendMode: "plus-darker",
+          mixBlendMode: "difference",
           transition:
             "width 240ms cubic-bezier(0.22, 1, 0.36, 1), height 240ms cubic-bezier(0.22, 1, 0.36, 1), opacity 160ms ease",
         }}

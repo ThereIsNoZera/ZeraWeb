@@ -1,10 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
-import CursorShape from "./CursorShape";
-
-type CursorMode = "default" | "Pointer";
-
 const INTERACTIVE_SELECTOR = [
   "a",
   "button",
@@ -17,9 +13,11 @@ const INTERACTIVE_SELECTOR = [
 ].join(",");
 
 export function CustomCursor() {
-  const cursorRef = useRef<HTMLDivElement>(null);
+  const yellowRef = useRef<HTMLDivElement>(null);
+  const dotRef = useRef<HTMLDivElement>(null);
+  const lastPointerPosition = useRef({ x: 0, y: 0 });
 
-  const [mode, setMode] = useState<CursorMode>("default");
+  const [isPointer, setIsPointer] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [isPressed, setIsPressed] = useState(false);
   const [isEnabled, setIsEnabled] = useState(false);
@@ -36,25 +34,51 @@ export function CustomCursor() {
     setIsEnabled(true);
     document.documentElement.classList.add("custom-cursor-enabled");
 
-    const handlePointerMove = (event: PointerEvent) => {
-      const cursor = cursorRef.current;
+    const updatePointerMode = (x: number, y: number) => {
+      const elementsUnderCursor = document.elementsFromPoint(x, y);
 
-      if (cursor) {
-        cursor.style.transform = `translate3d(
-          ${event.clientX - 22}px,
-          ${event.clientY - 22}px,
-          0
-        )`;
+      const isInteractive = elementsUnderCursor.some((element) => {
+        return (
+          element.matches(INTERACTIVE_SELECTOR) ||
+          Boolean(element.closest(INTERACTIVE_SELECTOR))
+        );
+      });
+
+      setIsPointer(isInteractive);
+    };
+
+    const handlePointerMove = (event: PointerEvent) => {
+      lastPointerPosition.current = {
+        x: event.clientX,
+        y: event.clientY,
+      };
+      const left = `${event.clientX}px`;
+      const top = `${event.clientY}px`;
+
+      if (yellowRef.current) {
+        yellowRef.current.style.left = left;
+        yellowRef.current.style.top = top;
       }
 
-      const target = event.target;
+      if (dotRef.current) {
+        dotRef.current.style.left = left;
+        dotRef.current.style.top = top;
+      }
 
-      const isInteractive =
-        target instanceof Element &&
-        Boolean(target.closest(INTERACTIVE_SELECTOR));
-
-      setMode(isInteractive ? "Pointer" : "default");
+      updatePointerMode(event.clientX, event.clientY);
       setIsVisible(true);
+    };
+
+    const handlePointerOver = (event: PointerEvent) => {
+      updatePointerMode(event.clientX, event.clientY);
+    };
+
+    const handleScroll = () => {
+      const { x, y } = lastPointerPosition.current;
+
+      window.requestAnimationFrame(() => {
+        updatePointerMode(x, y);
+      });
     };
 
     const handlePointerDown = () => {
@@ -74,12 +98,16 @@ export function CustomCursor() {
     };
 
     window.addEventListener("pointermove", handlePointerMove);
+    window.addEventListener("pointerover", handlePointerOver);
     window.addEventListener("pointerdown", handlePointerDown);
     window.addEventListener("pointerup", handlePointerUp);
+    window.addEventListener("scroll", handleScroll, true);
+
     document.documentElement.addEventListener(
       "pointerleave",
       handlePointerLeave,
     );
+
     document.documentElement.addEventListener(
       "pointerenter",
       handlePointerEnter,
@@ -89,12 +117,16 @@ export function CustomCursor() {
       document.documentElement.classList.remove("custom-cursor-enabled");
 
       window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("pointerover", handlePointerOver);
       window.removeEventListener("pointerdown", handlePointerDown);
       window.removeEventListener("pointerup", handlePointerUp);
+      window.removeEventListener("scroll", handleScroll, true);
+
       document.documentElement.removeEventListener(
         "pointerleave",
         handlePointerLeave,
       );
+
       document.documentElement.removeEventListener(
         "pointerenter",
         handlePointerEnter,
@@ -107,20 +139,33 @@ export function CustomCursor() {
   }
 
   return createPortal(
-    <div
-      aria-hidden="true"
-      className={`custom-cursor ${isVisible ? "custom-cursor--visible" : ""}`}
-      ref={cursorRef}
-    >
+    <>
       <div
-        className="custom-cursor__scale"
-        style={{
-          transform: isPressed ? "scale(0.86)" : "scale(1)",
-        }}
-      >
-        <CursorShape property1={mode} />
-      </div>
-    </div>,
+        aria-hidden="true"
+        className={[
+          "custom-cursor-yellow",
+          isPointer ? "custom-cursor-yellow--pointer" : "",
+          isVisible ? "custom-cursor--visible" : "",
+          isPressed ? "custom-cursor--pressed" : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+        ref={yellowRef}
+      />
+
+      <div
+        aria-hidden="true"
+        className={[
+          "custom-cursor-dot",
+          isPointer ? "custom-cursor-dot--pointer" : "",
+          isVisible ? "custom-cursor--visible" : "",
+          isPressed ? "custom-cursor--pressed" : "",
+        ]
+          .filter(Boolean)
+          .join(" ")}
+        ref={dotRef}
+      />
+    </>,
     document.body,
   );
 }
