@@ -492,7 +492,7 @@ export default function MacBookAir() {
         Hello, This is
       </p>
       <p className="[word-break:break-word] absolute font-['Clash_Display:Regular',sans-serif] leading-[normal] left-[44px] not-italic text-[20px] text-[rgba(0,0,0,0.8)] top-[519px] tracking-[1px] w-[586px] whitespace-pre-wrap">
-        {`Design Student `}
+        {`I turn ideas into products with personality. `}
         <br aria-hidden />
         {`UI/UX design  Illustration  communication`}
       </p>

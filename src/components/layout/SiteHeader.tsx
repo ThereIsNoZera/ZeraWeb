@@ -1,4 +1,10 @@
-import { CV_SCROLL, PROJECTS_SCROLL } from "../../config/portfolio";
+import {
+  CV_ACTIVE_SCROLL,
+  CV_SCROLL,
+  PROJECTS_SCROLL,
+  VISIT_CARDS_ACTIVE_SCROLL,
+  VISIT_CARDS_SCROLL,
+} from "../../config/portfolio";
 import { TRANSLATIONS, type Lang } from "../../data/translations";
 import type { PageId } from "../../types/navigation";
 import { YellowStar } from "../portfolio/YellowStar";
@@ -57,11 +63,13 @@ export function SiteHeader({
   const activeSection =
     page === "archive"
       ? "archive"
-      : scrollY >= CV_SCROLL
-        ? "cv"
-        : scrollY >= PROJECTS_SCROLL
-          ? "projects"
-          : "none";
+      : scrollY >= VISIT_CARDS_ACTIVE_SCROLL
+        ? "visitCards"
+        : scrollY >= CV_ACTIVE_SCROLL
+          ? "cv"
+          : scrollY >= PROJECTS_SCROLL
+            ? "projects"
+            : "none";
 
   return (
     <header
@@ -115,7 +123,13 @@ export function SiteHeader({
             |
           </span>
 
-          <HeaderLink label={text.navVisit} active={false} onClick={() => {}} />
+          <HeaderLink
+            label="Visit cards"
+            active={activeSection === "visitCards"}
+            onClick={() => onNavigateToSection(VISIT_CARDS_SCROLL)}
+          />
+
+          {/* <HeaderLink label={text.navVisit} active={false} onClick={() => {}} /> */}
 
           <span className="font-clash text-[20px] font-normal text-black">
             •

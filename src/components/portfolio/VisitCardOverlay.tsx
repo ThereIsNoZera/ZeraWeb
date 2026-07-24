@@ -1,18 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { createPortal } from "react-dom";
 
 import { ArchiveButton } from "./ActionButtons";
-
-export interface VisitCardFormData {
-  name: string;
-  role: string;
-  handle: string;
-  comment: string;
-}
+import type { VisitCardFormData } from "../../types/visitorCards";
 
 interface VisitCardOverlayProps {
   onClose: () => void;
-  onCreate?: (data: VisitCardFormData) => void;
+  onCreate: (data: VisitCardFormData) => Promise<void>;
 }
 
 interface FieldErrors {
@@ -87,6 +81,8 @@ export function VisitCardOverlay({ onClose, onCreate }: VisitCardOverlayProps) {
 
   const [errors, setErrors] = useState<FieldErrors>({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   useEffect(() => {
     const scrollPosition = window.scrollY;
@@ -145,8 +141,12 @@ export function VisitCardOverlay({ onClose, onCreate }: VisitCardOverlayProps) {
     }
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (isSubmitting) {
+      return;
+    }
 
     if (!form.name.trim()) {
       setErrors({
@@ -163,8 +163,22 @@ export function VisitCardOverlay({ onClose, onCreate }: VisitCardOverlayProps) {
       comment: form.comment.trim(),
     };
 
-    onCreate?.(cleanedForm);
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError("");
+
+    try {
+      await onCreate(cleanedForm);
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Could not create visit card:", error);
+
+      const errorMessage =
+        error instanceof Error ? error.message : "Unknown database error.";
+
+      setSubmitError(errorMessage);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return createPortal(
@@ -271,9 +285,23 @@ export function VisitCardOverlay({ onClose, onCreate }: VisitCardOverlayProps) {
                 />
               </div>
             </div>
-
-            <div className="mt-[2px]">
-              <ArchiveButton label="Create!" type="submit" />
+            {submitError && (
+              <p
+                className="m-0 text-center font-clash text-[13px] font-medium tracking-[0.4px] text-[#b42318]"
+                role="alert"
+              >
+                {submitError}
+              </p>
+            )}
+            <div
+              className={`mt-[2px] ${
+                isSubmitting ? "pointer-events-none opacity-60" : ""
+              }`}
+            >
+              <ArchiveButton
+                label={isSubmitting ? "Creating..." : "Create!"}
+                type="submit"
+              />
             </div>
           </form>
         )}

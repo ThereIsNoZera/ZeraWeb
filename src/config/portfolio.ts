@@ -10,9 +10,6 @@ export const PATH_SCALE_X = PATH_SVG_W / PATH_VIEWBOX_W;
 
 export const PAGE_HEIGHT = 4200;
 
-export const PROJECTS_SCROLL = 700;
-export const CV_SCROLL = 3300;
-
 export const HERO_STAR_CENTER_X = 942;
 export const HERO_STAR_CENTER_Y = 257;
 export const HERO_STAR_SIZE = 1000;
@@ -24,3 +21,11 @@ export const STAR_SIZE_END = 480;
 export const HORIZONTAL_PATH_SPEED = 7;
 
 export const PROJECT_OVERLAY_WIDTH = 1100;
+
+export const PROJECTS_SCROLL = 700;
+
+export const CV_SCROLL = 3300;
+export const CV_ACTIVE_SCROLL = 2850;
+
+export const VISIT_CARDS_SCROLL = 4020;
+export const VISIT_CARDS_ACTIVE_SCROLL = 3700;

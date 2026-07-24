@@ -1,17 +1,15 @@
 import { useState } from "react";
 
 import { ArchiveButton } from "./ActionButtons";
-import { VisitCardOverlay, type VisitCardFormData } from "./VisitCardOverlay";
+import { createVisitCard } from "../../services/visitorCards";
+import type { VisitCardFormData } from "../../types/visitorCards";
+import { VisitCardOverlay } from "./VisitCardOverlay";
 
 export function VisitCardsSection() {
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
 
-  const handleCreateCard = (data: VisitCardFormData) => {
-    /*
-     * The database and random card-generation step will go here.
-     * For now, the form displays its success state after submission.
-     */
-    console.log("Visit card submitted:", data);
+  const handleCreateCard = async (data: VisitCardFormData) => {
+    await createVisitCard(data);
   };
 
   return (
