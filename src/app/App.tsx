@@ -61,7 +61,7 @@ export default function App() {
       />
 
       {page === "archive" ? (
-        <ArchivePage />
+        <ArchivePage lang={lang} />
       ) : (
         <HomePage
           scrollY={scrollY}

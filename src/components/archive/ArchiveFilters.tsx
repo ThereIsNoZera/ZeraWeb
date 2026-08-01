@@ -1,16 +1,18 @@
-import {
-  ARCHIVE_CATEGORIES,
-  type Category,
-} from "../../data/archiveItems";
+import { ARCHIVE_CATEGORIES, type Category } from "../../data/archiveItems";
 import { FilterIcon } from "./ArchiveIcons";
+
+import type { Lang } from "../../data/translations";
+import { ARCHIVE_CATEGORY_LABELS } from "../../data/archiveTranslations";
 
 interface ArchiveFiltersProps {
   activeFilter: Category | null;
+  lang: Lang;
   onToggleFilter: (category: Category) => void;
 }
 
 export function ArchiveFilters({
   activeFilter,
+  lang,
   onToggleFilter,
 }: ArchiveFiltersProps) {
   return (
@@ -47,7 +49,7 @@ export function ArchiveFilters({
                   transition: "color 0.15s ease",
                 }}
               >
-                {category}
+                {ARCHIVE_CATEGORY_LABELS[category][lang]}
               </span>
             </span>
           </button>

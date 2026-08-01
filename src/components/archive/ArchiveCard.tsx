@@ -1,18 +1,26 @@
 import type { ArchiveCardData } from "../../data/archiveItems";
 import { CollectionIcon, ProjectIcon } from "./ArchiveIcons";
+import type { Lang } from "../../data/translations";
+import { getArchiveCardCaption } from "../../data/archiveTranslations";
 
 interface ArchiveCardProps {
   card: ArchiveCardData;
+  lang: Lang;
   onOpen: () => void;
 }
 
-export function ArchiveCard({ card, onOpen }: ArchiveCardProps) {
-  const { images, aspectW, aspectH, rotated, stacked, caption, icon } = card;
+export function ArchiveCard({ card, lang, onOpen }: ArchiveCardProps) {
+  const { images, aspectW, aspectH, rotated, stacked, icon } = card;
+
+  const caption = getArchiveCardCaption(card.id, lang, card.caption);
+
+  const openLabel = lang === "de" ? `${caption} öffnen` : `Open ${caption}`;
+
   const ratio = aspectW / aspectH;
 
   return (
     <article
-      aria-label={`Open ${caption}`}
+      aria-label={openLabel}
       className="cursor-zoom-in focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
       onClick={onOpen}
       onKeyDown={(event) => {

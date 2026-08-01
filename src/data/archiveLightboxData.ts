@@ -97,11 +97,18 @@ import img241 from "../imports/Archive/details/241.webp";
 import img242 from "../imports/Archive/details/242.webp";
 import img243 from "../imports/Archive/details/243.webp";
 
+import type { Lang } from "./translations";
+import {
+  ARCHIVE_DETAIL_CAPTIONS,
+  getArchiveCardCaption,
+  type LocalizedText,
+} from "./archiveTranslations";
+
 export type ArchiveImageFit = "contain" | "cover";
 
 export interface ArchiveLightboxImage {
   src: string;
-  caption?: string;
+  caption?: LocalizedText;
 }
 
 export interface ArchiveLightboxConfig {
@@ -112,7 +119,7 @@ export interface ArchiveLightboxConfig {
   images?: ArchiveLightboxImage[];
 
   /** Optional overlay caption. Falls back to the card caption. */
-  caption?: string;
+  caption?: LocalizedText;
 
   /** Use "contain" to show the complete image, or "cover" to crop and fill. */
   mainImageFit?: ArchiveImageFit;
@@ -143,10 +150,10 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
     images: [
       {
         src: img10,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
     ],
-    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
     mainImageFit: "contain",
     thumbnailFit: "cover",
     mainImageWidth: "min(1100px, calc(100vw - 184px))",
@@ -157,10 +164,10 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
     images: [
       {
         src: img20,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
     ],
-    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
     mainImageFit: "contain",
     thumbnailFit: "cover",
     mainImageWidth: "min(1100px, calc(100vw - 184px))",
@@ -171,26 +178,26 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
     images: [
       {
         src: img30,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img31,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img32,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img33,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img34,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
     ],
-    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
     mainImageFit: "contain",
     thumbnailFit: "cover",
     mainImageWidth: "min(1100px, calc(100vw - 184px))",
@@ -201,14 +208,14 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
     images: [
       {
         src: img50,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img51,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
     ],
-    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
     mainImageFit: "contain",
     thumbnailFit: "cover",
     mainImageWidth: "min(1100px, calc(100vw - 184px))",
@@ -219,26 +226,26 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
     images: [
       {
         src: img60,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img61,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img62,
-        caption: "Detail study of the hands.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.hands,
       },
       {
         src: img63,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
       {
         src: img64,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
     ],
-    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
     mainImageFit: "contain",
     thumbnailFit: "cover",
     mainImageWidth: "min(1100px, calc(100vw - 184px))",
@@ -249,30 +256,30 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
     images: [
       {
         src: img70,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img71,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img72,
-        caption: "Detail study of the hands.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.hands,
       },
       {
         src: img73,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
       {
         src: img74,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
       {
         src: img75,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
     ],
-    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
     mainImageFit: "contain",
     thumbnailFit: "cover",
     mainImageWidth: "min(1100px, calc(100vw - 184px))",
@@ -283,34 +290,34 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
     images: [
       {
         src: img80,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img81,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img82,
-        caption: "Detail study of the hands.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.hands,
       },
       {
         src: img83,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
       {
         src: img84,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
       {
         src: img85,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
       {
         src: img86,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
     ],
-    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
     mainImageFit: "contain",
     thumbnailFit: "cover",
     mainImageWidth: "min(1100px, calc(100vw - 184px))",
@@ -321,10 +328,10 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
     images: [
       {
         src: img90,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
     ],
-    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
     mainImageFit: "contain",
     thumbnailFit: "cover",
     mainImageWidth: "min(1100px, calc(100vw - 184px))",
@@ -335,22 +342,22 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
     images: [
       {
         src: img100,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img101,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img102,
-        caption: "Detail study of the hands.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.hands,
       },
       {
         src: img103,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
     ],
-    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
     mainImageFit: "contain",
     thumbnailFit: "cover",
     mainImageWidth: "min(1100px, calc(100vw - 184px))",
@@ -361,26 +368,26 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
     images: [
       {
         src: img110,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img111,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img112,
-        caption: "Detail study of the hands.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.hands,
       },
       {
         src: img113,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
       {
         src: img114,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
     ],
-    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
     mainImageFit: "contain",
     thumbnailFit: "cover",
     mainImageWidth: "min(1100px, calc(100vw - 184px))",
@@ -391,30 +398,30 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
     images: [
       {
         src: img120,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img121,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img122,
-        caption: "Detail study of the hands.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.hands,
       },
       {
         src: img123,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
       {
         src: img124,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
       {
         src: img125,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
     ],
-    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
     mainImageFit: "contain",
     thumbnailFit: "cover",
     mainImageWidth: "min(1100px, calc(100vw - 184px))",
@@ -425,26 +432,26 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
     images: [
       {
         src: img130,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img131,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img132,
-        caption: "Detail study of the hands.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.hands,
       },
       {
         src: img133,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
       {
         src: img134,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
     ],
-    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
     mainImageFit: "contain",
     thumbnailFit: "cover",
     mainImageWidth: "min(1100px, calc(100vw - 184px))",
@@ -455,34 +462,34 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
     images: [
       {
         src: img140,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img141,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img142,
-        caption: "Detail study of the hands.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.hands,
       },
       {
         src: img143,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
       {
         src: img144,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
       {
         src: img145,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
       {
         src: img146,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
     ],
-    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
     mainImageFit: "contain",
     thumbnailFit: "cover",
     mainImageWidth: "min(1100px, calc(100vw - 184px))",
@@ -493,10 +500,10 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
     images: [
       {
         src: img150,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
     ],
-    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
     mainImageFit: "contain",
     thumbnailFit: "cover",
     mainImageWidth: "min(1100px, calc(100vw - 184px))",
@@ -507,10 +514,10 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
     images: [
       {
         src: img160,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
     ],
-    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
     mainImageFit: "contain",
     thumbnailFit: "cover",
     mainImageWidth: "min(1100px, calc(100vw - 184px))",
@@ -521,22 +528,22 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
     images: [
       {
         src: img170,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img171,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img172,
-        caption: "Detail study of the hands.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.hands,
       },
       {
         src: img173,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
     ],
-    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
     mainImageFit: "contain",
     thumbnailFit: "cover",
     mainImageWidth: "min(1100px, calc(100vw - 184px))",
@@ -547,22 +554,22 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
     images: [
       {
         src: img180,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       // {
       //   src: img181,
-      //   caption: "Color pencil, live model sketching, 56 × 42 cm.",
+      //   caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       // },
       {
         src: img182,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img183,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
     ],
-    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
     mainImageFit: "contain",
     thumbnailFit: "cover",
     mainImageWidth: "min(1100px, calc(100vw - 184px))",
@@ -573,14 +580,14 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
     images: [
       {
         src: img190,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img191,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
     ],
-    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
     mainImageFit: "contain",
     thumbnailFit: "cover",
     mainImageWidth: "min(1100px, calc(100vw - 184px))",
@@ -591,22 +598,22 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
     images: [
       {
         src: img200,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img201,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img202,
-        caption: "Detail study of the hands.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.hands,
       },
       {
         src: img203,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
     ],
-    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
     mainImageFit: "contain",
     thumbnailFit: "cover",
     mainImageWidth: "min(1100px, calc(100vw - 184px))",
@@ -617,10 +624,10 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
     images: [
       {
         src: img220,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
     ],
-    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
     mainImageFit: "contain",
     thumbnailFit: "cover",
     mainImageWidth: "min(1100px, calc(100vw - 184px))",
@@ -631,22 +638,22 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
     images: [
       {
         src: img240,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img241,
-        caption: "Color pencil, live model sketching, 56 × 42 cm.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
       },
       {
         src: img242,
-        caption: "Detail study of the hands.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.hands,
       },
       {
         src: img243,
-        caption: "Second pose, color pencil on paper.",
+        caption: ARCHIVE_DETAIL_CAPTIONS.secondPose,
       },
     ],
-    caption: "Color pencil, Live model sketching, 56 × 42 cm.",
+    caption: ARCHIVE_DETAIL_CAPTIONS.liveModel,
     mainImageFit: "contain",
     thumbnailFit: "cover",
     mainImageWidth: "min(1100px, calc(100vw - 184px))",
@@ -674,8 +681,13 @@ const ARCHIVE_LIGHTBOX_CONFIG: Partial<
   */
 };
 
+export interface ResolvedArchiveLightboxImage {
+  src: string;
+  caption?: string;
+}
+
 export interface ResolvedArchiveLightboxData {
-  images: string[];
+  images: ResolvedArchiveLightboxImage[];
   caption: string;
   mainImageFit: ArchiveImageFit;
   thumbnailFit: ArchiveImageFit;
@@ -685,18 +697,32 @@ export interface ResolvedArchiveLightboxData {
 
 export function getArchiveLightboxData(
   card: ArchiveCardData,
+  lang: Lang,
 ): ResolvedArchiveLightboxData {
   const customConfig = ARCHIVE_LIGHTBOX_CONFIG[card.id];
-  const customImages = customConfig?.images;
+
+  const customImages = customConfig?.images?.map((image) => ({
+    src: image.src,
+    caption: image.caption?.[lang],
+  }));
 
   return {
     images:
-      customImages && customImages.length > 0 ? customImages : card.images,
-    caption: customConfig?.caption ?? card.caption,
+      customImages && customImages.length > 0
+        ? customImages
+        : card.images.map((src) => ({ src })),
+
+    caption:
+      customConfig?.caption?.[lang] ??
+      getArchiveCardCaption(card.id, lang, card.caption),
+
     mainImageFit: customConfig?.mainImageFit ?? "contain",
+
     thumbnailFit: customConfig?.thumbnailFit ?? "cover",
+
     mainImageWidth:
       customConfig?.mainImageWidth ?? "min(1100px, calc(100vw - 64px))",
+
     mainImageBackground: customConfig?.mainImageBackground ?? "transparent",
   };
 }

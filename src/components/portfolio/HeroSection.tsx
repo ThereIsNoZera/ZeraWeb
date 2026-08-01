@@ -73,7 +73,7 @@ export function HeroSection({ hello, description }: HeroSectionProps) {
           width: 586,
           whiteSpace: "pre-wrap",
           lineHeight: "normal",
-          zIndex: 1,
+          zIndex: 3,
         }}
       >
         {description}

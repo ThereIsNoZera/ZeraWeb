@@ -5,13 +5,20 @@ import { ArchiveFilters } from "../components/archive/ArchiveFilters";
 import { ArchiveLightbox } from "../components/archive/ArchiveLightbox";
 import imgPaperOverlay from "../imports/paper-texture-web-fallback.jpg";
 import { SiteFooter } from "../components/layout/SiteFooter";
+import type { Lang } from "../data/translations";
+import { ARCHIVE_UI_TEXT } from "../data/archiveTranslations";
 import {
   getArchiveColumns,
   type ArchiveCardData,
   type Category,
 } from "../data/archiveItems";
 
-export default function ArchivePage() {
+interface ArchivePageProps {
+  lang: Lang;
+}
+
+export default function ArchivePage({ lang }: ArchivePageProps) {
+  const archiveText = ARCHIVE_UI_TEXT[lang];
   const [activeFilter, setActiveFilter] = useState<Category | null>(null);
   const [openCard, setOpenCard] = useState<ArchiveCardData | null>(null);
   const columns = getArchiveColumns(activeFilter);
@@ -52,11 +59,12 @@ export default function ArchivePage() {
             className="whitespace-nowrap font-['Clash_Display:Regular',sans-serif] font-normal not-italic tracking-[1.12px] text-black"
             style={{ fontSize: 28, marginBottom: 28 }}
           >
-            Explore my work archive
+            {archiveText.heading}
           </h1>
 
           <ArchiveFilters
             activeFilter={activeFilter}
+            lang={lang}
             onToggleFilter={toggleFilter}
           />
 
@@ -69,6 +77,7 @@ export default function ArchivePage() {
                 {column.map((card) => (
                   <ArchiveCard
                     card={card}
+                    lang={lang}
                     key={card.id}
                     onOpen={() => setOpenCard(card)}
                   />
@@ -81,7 +90,11 @@ export default function ArchivePage() {
       </main>
 
       {openCard && (
-        <ArchiveLightbox card={openCard} onClose={() => setOpenCard(null)} />
+        <ArchiveLightbox
+          card={openCard}
+          lang={lang}
+          onClose={() => setOpenCard(null)}
+        />
       )}
     </>
   );
