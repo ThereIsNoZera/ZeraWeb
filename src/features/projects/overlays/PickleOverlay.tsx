@@ -63,21 +63,21 @@ function PickleHero() {
           "url(\"data:image/svg+xml;utf8,<svg viewBox='0 0 1280 710' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(0.7338 84.542 -152.41 0.65115 655.95 178.62)'><stop stop-color='rgba(255,214,90,1)' offset='0'/><stop stop-color='rgba(249,221,135,1)' offset='0.5'/><stop stop-color='rgba(243,227,180,1)' offset='1'/></radialGradient></defs></svg>\")",
       }}
     >
-      <div className="absolute h-[710px] left-[391px] shadow-[-7px_14px_20px_0px_rgba(0,0,0,0.32)] top-[212px] w-[350px]">
+      <div className="absolute h-[710px] left-[391px]  top-[212px] w-[350px]">
         <img
           alt=""
           className="absolute inset-0 max-w-none object-cover pointer-events-none size-full"
           src={imgOn2}
         />
       </div>
-      <div className="absolute h-[625px] left-[751px] shadow-[-7px_14px_20px_0px_rgba(0,0,0,0.32)] top-[452px] w-[315px]">
+      <div className="absolute h-[625px] left-[751px] top-[452px] w-[315px]">
         <img
           alt=""
           className="absolute inset-0 max-w-none object-cover pointer-events-none size-full"
           src={imgOn3}
         />
       </div>
-      <div className="absolute h-[625px] left-[44px] shadow-[-7px_14px_20px_0px_rgba(0,0,0,0.32)] top-[25px] w-[331px]">
+      <div className="absolute h-[625px] left-[44px] top-[25px] w-[331px]">
         <img
           alt=""
           className="absolute inset-0 max-w-none object-cover pointer-events-none size-full"
