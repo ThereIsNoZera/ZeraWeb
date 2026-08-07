@@ -15,8 +15,9 @@ export function VisitCardsSection() {
   return (
     <>
       <section
+        id="visit-cards-section"
         aria-labelledby="visit-cards-heading"
-        className="relative z-10 -mt-[180px] flex w-full flex-col items-center pb-[48px]"
+        className="relative z-10 flex w-full flex-col items-center pb-[48px]"
       >
         <h2
           className="m-0 text-center font-clash text-[32px] font-medium not-italic leading-[24px] tracking-[2.56px] text-black"

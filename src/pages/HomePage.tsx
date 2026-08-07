@@ -3,7 +3,7 @@ import { TRANSLATIONS, type Lang } from "../data/translations";
 import { usePortfolioAnimation } from "../features/portfolio/usePortfolioAnimation";
 import imgPaperOverlay from "../imports/paper-texture-web-fallback.jpg";
 import type { ProjectId } from "../types/navigation";
-import { ArchiveButton } from "../components/portfolio/ActionButtons";
+import { HomeArchiveSection } from "../components/portfolio/HomeArchiveSection";
 import { CvSection } from "../components/portfolio/CvSection";
 import { HeroSection } from "../components/portfolio/HeroSection";
 import { PortfolioPath } from "../components/portfolio/PortfolioPath";
@@ -16,14 +16,13 @@ const FOOTER_HEIGHT = 230;
 interface HomePageProps {
   scrollY: number;
   lang: Lang;
-  onOpenArchive: () => void;
+
   onOpenProject: (project: ProjectId) => void;
 }
 
 export default function HomePage({
   scrollY,
   lang,
-  onOpenArchive,
   onOpenProject,
 }: HomePageProps) {
   const text = TRANSLATIONS[lang];
@@ -55,7 +54,10 @@ export default function HomePage({
 
       <div
         className="relative mx-auto"
-        style={{ width: 1280, height: PAGE_HEIGHT }}
+        style={{
+          width: 1280,
+          height: PAGE_HEIGHT,
+        }}
       >
         <HeroSection hello={text.hello} description={text.description} />
 
@@ -64,20 +66,18 @@ export default function HomePage({
         <ProjectsSection text={text} onOpenProject={onOpenProject} />
 
         <CvSection />
-
-        <div
-          className="absolute"
-          style={{
-            left: 569,
-            top: 3265,
-            zIndex: 3,
-          }}
-        >
-          <ArchiveButton label={text.archiveBtn} onClick={onOpenArchive} />
-        </div>
       </div>
 
-      <VisitCardsSection />
+      <div
+        className="relative z-10 flex w-full flex-col items-center gap-[90px]"
+        style={{
+          marginTop: -202,
+        }}
+      >
+        <HomeArchiveSection lang={lang} />
+
+        <VisitCardsSection />
+      </div>
 
       <SiteFooter />
     </main>

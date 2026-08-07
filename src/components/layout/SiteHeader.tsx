@@ -132,7 +132,7 @@ export function SiteHeader({
           {/* <HeaderLink label={text.navVisit} active={false} onClick={() => {}} /> */}
 
           <span className="font-clash text-[20px] font-normal text-black">
-            •
+            |
           </span>
 
           <HeaderLink

@@ -28,19 +28,24 @@ export default function App() {
     scrollToTop();
   }, [scrollToTop]);
 
-  const openArchive = useCallback(() => {
-    setPage("archive");
-    scrollToTop();
-  }, [scrollToTop]);
-
-  const navigateToHomeSection = useCallback((scrollPosition: number) => {
+  const navigateToHomeSection = useCallback((sectionId: string) => {
     setPage("home");
 
-    // Wait for the homepage to mount before measuring and scrolling.
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
+        const section = document.getElementById(sectionId);
+
+        if (!section) {
+          return;
+        }
+
+        const headerOffset = 90;
+
+        const sectionTop =
+          section.getBoundingClientRect().top + window.scrollY - headerOffset;
+
         window.scrollTo({
-          top: scrollPosition,
+          top: sectionTop,
           behavior: "smooth",
         });
       });
@@ -66,7 +71,6 @@ export default function App() {
         <HomePage
           scrollY={scrollY}
           lang={lang}
-          onOpenArchive={openArchive}
           onOpenProject={setActiveProject}
         />
       )}

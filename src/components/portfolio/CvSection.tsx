@@ -4,6 +4,7 @@ import { CvButton } from "./ActionButtons";
 export function CvSection() {
   return (
     <div
+      id="cv-section"
       className="absolute overflow-visible"
       style={{ left: 0, top: 3350, width: 1280, height: 558, zIndex: 1 }}
     >
